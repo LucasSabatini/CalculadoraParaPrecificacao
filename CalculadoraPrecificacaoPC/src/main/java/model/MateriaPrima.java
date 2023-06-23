@@ -1,6 +1,7 @@
 package model;
 
 public class MateriaPrima {
+    private String nomeMP; //Nome da matéria-prima
     private double precoPagoMP; //Preço pago na matéria-prima;
     private double pesoUsadoFormulacaoMP; //Peso da matéria-prima usada na formulação;
     private double pesoCompradoMP; //Peso comprado de matéria-prima;
@@ -10,6 +11,14 @@ public class MateriaPrima {
         this.precoPagoMP = precoPagoMP;
         this.pesoUsadoFormulacaoMP = pesoUsadoFormulacaoMP;
         this.pesoCompradoMP = pesoCompradoMP;
+    }
+
+    public String getNomeMP() {
+        return nomeMP;
+    }
+
+    public void setNomeMP(String nomeMP) {
+        this.nomeMP = nomeMP;
     }
 
     public double getPrecoPagoMP(){
