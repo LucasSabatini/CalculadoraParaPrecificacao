@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MateriaPrima {
@@ -8,6 +10,8 @@ public class MateriaPrima {
     private double pesoUsadoFormulacaoMP; //Peso da matéria-prima usada na formulação;
     private double pesoCompradoMP; //Peso comprado de matéria-prima;
     private double gastoFinalMP; //Gasto da matéria-prima na formulação;
+
+    private static List<MateriaPrima> materiasPrimas = new ArrayList<>();
 
     public MateriaPrima(double precoPagoMP, double pesoUsadoFormulacaoMP, double pesoCompradoMP) {
         this.precoPagoMP = precoPagoMP;
@@ -60,6 +64,14 @@ public class MateriaPrima {
 
     public void setGastoFinalMP(double gastoFinalMP){
         this.gastoFinalMP = gastoFinalMP;
+    }
+
+    public static List<MateriaPrima> getMateriasPrimas() {
+        return materiasPrimas;
+    }
+
+    public void addMateriaPrima(MateriaPrima materiaPrima) {
+        this.materiasPrimas.add(materiaPrima);
     }
 
     @Override

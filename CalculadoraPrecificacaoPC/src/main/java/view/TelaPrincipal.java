@@ -1,34 +1,28 @@
 package view;
 
 import model.Calculadora;
-import model.MateriaPrima;
 
-import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class TelaPrincipal {
 
-    public MateriaPrima iniciarCalculadora() {
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+    public void iniciarAplicativo() {
         Scanner sc = new Scanner(System.in);
-        double precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP;
-        String nomeMP;
+        int opcao;
+        while (true) {
+            System.out.println("Menu: ");
+            System.out.println("1 - Calcular nova matéria-prima");
+            System.out.println("2 - Consultar histórico");
+            System.out.println("0 - Encerrar aplicativo");
+            System.out.print("Digite o número da opção desejada: ");
+            opcao = sc.nextInt();
 
-        System.out.print("Digite o nome da matéria-prima: ");
-        nomeMP = sc.nextLine();
-        System.out.print("Digite o valor pago na matéria-prima: R$");
-        precoPagoMP = sc.nextDouble();
-        System.out.print("Digite o peso da matéria-prima usado na formulação: ");
-        pesoUsadoFormulacaoMP = sc.nextDouble();
-        System.out.print("Digite o peso total, em gramas, da matéria-prima comprada: ");
-        pesoCompradoMP = sc.nextDouble();
-
-        MateriaPrima materiaPrima = new MateriaPrima(nomeMP, precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP);
-        materiaPrima.setGastoFinalMP(Calculadora.calcularMateriaPrima(materiaPrima));
-
-        System.out.println("Valor da matéria-prima para esta formulação equivale a R$" + decimalFormat.format(Calculadora.calcularMateriaPrima(materiaPrima)));
-
-        return materiaPrima;
+            switch (opcao) {
+                case 1 -> Calculadora.iniciarCalculadora();
+                case 2 -> Calculadora.consultarHistorico();
+                case 0 -> System.exit(0);
+            }
+        }
     }
+
 }
