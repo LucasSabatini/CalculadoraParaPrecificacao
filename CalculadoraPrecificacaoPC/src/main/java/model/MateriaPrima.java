@@ -1,18 +1,25 @@
 package model;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class MateriaPrima {
+    private int id;
     private String nomeMP; //Nome da matéria-prima
     private double precoPagoMP; //Preço pago na matéria-prima;
     private double pesoUsadoFormulacaoMP; //Peso da matéria-prima usada na formulação;
     private double pesoCompradoMP; //Peso comprado de matéria-prima;
     private double gastoFinalMP; //Gasto da matéria-prima na formulação;
 
-    private static List<MateriaPrima> materiasPrimas = new ArrayList<>();
+    private static final List<MateriaPrima> materiasPrimas = new ArrayList<>();
+
+
 
     public MateriaPrima(double precoPagoMP, double pesoUsadoFormulacaoMP, double pesoCompradoMP) {
         this.precoPagoMP = precoPagoMP;
@@ -25,6 +32,14 @@ public class MateriaPrima {
         this.precoPagoMP = precoPagoMP;
         this.pesoUsadoFormulacaoMP = pesoUsadoFormulacaoMP;
         this.pesoCompradoMP = pesoCompradoMP;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNomeMP() {
@@ -67,19 +82,16 @@ public class MateriaPrima {
         this.gastoFinalMP = gastoFinalMP;
     }
 
-    public static List<MateriaPrima> getMateriasPrimas() {
+    public static List<MateriaPrima> getMateriaPrima() {
         return materiasPrimas;
-    }
-
-    public void setMateriaPrima(MateriaPrima materiaPrima) {
-        this.materiasPrimas.add(materiaPrima);
     }
 
     @Override
     public String toString() {
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         return "MateriaPrima{" +
-                "nomeMP='" + nomeMP + '\'' +
+                "id=" + id +
+                ", nomeMP='" + nomeMP + '\'' +
                 ", precoPagoMP=" + decimalFormat.format(precoPagoMP) +
                 ", pesoUsadoFormulacaoMP=" + decimalFormat.format(pesoUsadoFormulacaoMP) +
                 ", pesoCompradoMP=" + decimalFormat.format(pesoCompradoMP) +
