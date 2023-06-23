@@ -1,5 +1,6 @@
 package view;
 
+import infra.OperacoesMateriaPrima;
 import model.Calculadora;
 
 import java.util.Scanner;
@@ -19,10 +20,9 @@ public class TelaPrincipal {
 
             switch (opcao) {
                 case 1 -> Calculadora.iniciarCalculadora();
-                case 2 -> Calculadora.consultarHistorico();
+                case 2 -> OperacoesMateriaPrima.consultarHistorico();
                 case 0 -> System.exit(0);
             }
         }
     }
-
 }

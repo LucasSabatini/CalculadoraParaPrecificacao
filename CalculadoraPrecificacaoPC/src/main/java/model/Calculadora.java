@@ -1,5 +1,7 @@
 package model;
 
+import infra.OperacoesMateriaPrima;
+
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -29,7 +31,7 @@ public class Calculadora {
         materiaPrima.setGastoFinalMP(Calculadora.calcularMateriaPrima(materiaPrima));
 
         System.out.println("Valor da matéria-prima para esta formulação equivale a R$" + decimalFormat.format(Calculadora.calcularMateriaPrima(materiaPrima)) + "\n");
-        materiaPrima.addMateriaPrima(materiaPrima);
+        OperacoesMateriaPrima.addMateriaPrima(materiaPrima);
     }
 
     public static double calcularMateriaPrima(MateriaPrima materiaPrima){
@@ -41,11 +43,5 @@ public class Calculadora {
             e.printStackTrace();
         }
         return gastoFinalMP;
-    }
-
-    public static void consultarHistorico() {
-        for(MateriaPrima materiaPrima : MateriaPrima.getMateriasPrimas()) {
-            System.out.println(materiaPrima.toString());
-        }
     }
 }

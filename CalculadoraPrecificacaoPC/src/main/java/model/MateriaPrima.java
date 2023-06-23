@@ -1,5 +1,6 @@
 package model;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -70,18 +71,19 @@ public class MateriaPrima {
         return materiasPrimas;
     }
 
-    public void addMateriaPrima(MateriaPrima materiaPrima) {
+    public void setMateriaPrima(MateriaPrima materiaPrima) {
         this.materiasPrimas.add(materiaPrima);
     }
 
     @Override
     public String toString() {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
         return "MateriaPrima{" +
                 "nomeMP='" + nomeMP + '\'' +
-                ", precoPagoMP=" + precoPagoMP +
-                ", pesoUsadoFormulacaoMP=" + pesoUsadoFormulacaoMP +
-                ", pesoCompradoMP=" + pesoCompradoMP +
-                ", gastoFinalMP=" + gastoFinalMP +
+                ", precoPagoMP=" + decimalFormat.format(precoPagoMP) +
+                ", pesoUsadoFormulacaoMP=" + decimalFormat.format(pesoUsadoFormulacaoMP) +
+                ", pesoCompradoMP=" + decimalFormat.format(pesoCompradoMP) +
+                ", gastoFinalMP=" + decimalFormat.format(gastoFinalMP) +
                 '}';
     }
 
