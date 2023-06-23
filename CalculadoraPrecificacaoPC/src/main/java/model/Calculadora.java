@@ -2,19 +2,24 @@ package model;
 
 import java.text.DecimalFormat;
 
-public class Calculadora extends MateriaPrima {
+public class Calculadora extends MateriaPrima{
 
-    public void calcularMateriaPrima(float precoMP, float pesoUsadoMP, float pesoCompradoMP){
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+    public Calculadora(MateriaPrima materiaPrima) {
+        super(materiaPrima.getPrecoPagoMP(), materiaPrima.getPesoUsadoFormulacaoMP(), materiaPrima.getPesoCompradoMP());
+    }
+
+    private Calculadora(double precoPagoMP, double pesoUsadoFormulacaoMP, double pesoCompradoMP) {
+        super(precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP);
+    }
+
+    public double calcularMateriaPrima(MateriaPrima materiaPrima){
+        double gastoFinalMP = 0;
         try {
-            setPrecoPagoMP(precoMP);
-            setPesoUsadoFormulacaoMP(pesoUsadoMP);
-            setPesoCompradoMP(pesoCompradoMP);
-            float gastoMP = ((precoMP * pesoUsadoMP) / pesoCompradoMP);
-            setGastoFinalMP(gastoMP);
-            System.out.println("Gasto desta Matéria-Prima: R$" + decimalFormat.format(gastoMP));
+            gastoFinalMP = ((materiaPrima.getPrecoPagoMP() * materiaPrima.getPesoUsadoFormulacaoMP()) / materiaPrima.getPesoCompradoMP());
+            materiaPrima.setGastoFinalMP(gastoFinalMP);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
+        return gastoFinalMP;
     }
 }
