@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class MateriaPrima {
     private String nomeMP; //Nome da matéria-prima
     private double precoPagoMP; //Preço pago na matéria-prima;
@@ -8,6 +10,13 @@ public class MateriaPrima {
     private double gastoFinalMP; //Gasto da matéria-prima na formulação;
 
     public MateriaPrima(double precoPagoMP, double pesoUsadoFormulacaoMP, double pesoCompradoMP) {
+        this.precoPagoMP = precoPagoMP;
+        this.pesoUsadoFormulacaoMP = pesoUsadoFormulacaoMP;
+        this.pesoCompradoMP = pesoCompradoMP;
+    }
+
+    public MateriaPrima(String nomeMP, double precoPagoMP, double pesoUsadoFormulacaoMP, double pesoCompradoMP) {
+        this.nomeMP = nomeMP;
         this.precoPagoMP = precoPagoMP;
         this.pesoUsadoFormulacaoMP = pesoUsadoFormulacaoMP;
         this.pesoCompradoMP = pesoCompradoMP;
@@ -51,5 +60,29 @@ public class MateriaPrima {
 
     public void setGastoFinalMP(double gastoFinalMP){
         this.gastoFinalMP = gastoFinalMP;
+    }
+
+    @Override
+    public String toString() {
+        return "MateriaPrima{" +
+                "nomeMP='" + nomeMP + '\'' +
+                ", precoPagoMP=" + precoPagoMP +
+                ", pesoUsadoFormulacaoMP=" + pesoUsadoFormulacaoMP +
+                ", pesoCompradoMP=" + pesoCompradoMP +
+                ", gastoFinalMP=" + gastoFinalMP +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MateriaPrima that = (MateriaPrima) o;
+        return Double.compare(that.precoPagoMP, precoPagoMP) == 0 && Double.compare(that.pesoUsadoFormulacaoMP, pesoUsadoFormulacaoMP) == 0 && Double.compare(that.pesoCompradoMP, pesoCompradoMP) == 0 && Double.compare(that.gastoFinalMP, gastoFinalMP) == 0 && Objects.equals(nomeMP, that.nomeMP);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nomeMP, precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP, gastoFinalMP);
     }
 }

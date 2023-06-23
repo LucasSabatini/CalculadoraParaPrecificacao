@@ -1,13 +1,22 @@
 package view;
 
+import model.MateriaPrima;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
+        List<MateriaPrima> materiasPrimas = new ArrayList<>();
         TelaPrincipal telaPrincipal = new TelaPrincipal();
-        telaPrincipal.iniciarCalculadora();
 
-//        System.out.println("Valor gasto de Matéria-Prima usada na formulação -> R$" +
-//                decimalFormat.format(calculadora.calcularMateriaPrima(materiaPrima)));
+        System.out.println("*** Seja bem-vinda ***");
+        materiasPrimas.add(telaPrincipal.iniciarCalculadora());
+
+        for(MateriaPrima materiaPrima : materiasPrimas) {
+            System.out.println(materiaPrima);
+        }
 
     }
 }
