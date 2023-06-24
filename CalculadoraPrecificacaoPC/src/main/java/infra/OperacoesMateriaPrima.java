@@ -2,14 +2,13 @@ package infra;
 
 import model.Calculadora;
 import model.MateriaPrima;
-import org.hibernate.dialect.MariaDBDialect;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class OperacoesMateriaPrima {
 
-    public static void addMateriaPrima(MateriaPrima materiaPrima) {
+    public static void adicionarMateriaPrima(MateriaPrima materiaPrima) {
         for (MateriaPrima consulta : MateriaPrima.getMateriaPrima()) {
             if (consulta.getNomeMP().equals(materiaPrima.getNomeMP())) {
                 consulta.setPrecoPagoMP(materiaPrima.getPrecoPagoMP());
@@ -66,11 +65,11 @@ public class OperacoesMateriaPrima {
         }
     }
 
-    public static void excluirMateriaPrima(String nome) {
+    public static void deletarMateriaPrima(String nome) {
         for (MateriaPrima consulta : MateriaPrima.getMateriaPrima()) {
             if (consulta.getNomeMP().equals(nome)) {
                 MateriaPrima.getMateriaPrima().remove(consulta);
-                System.out.println("Matéria-prima excluída co sucesso!");
+                System.out.println("Matéria-prima excluída com sucesso!");
             } else {
                 System.out.println("Matéria-prima não encontrada.");
             }

@@ -31,7 +31,7 @@ public class Calculadora {
         materiaPrima.setGastoFinalMP(Calculadora.calcularMateriaPrima(materiaPrima));
 
         System.out.println("Valor da matéria-prima para esta formulação equivale a R$" + decimalFormat.format(Calculadora.calcularMateriaPrima(materiaPrima)) + "\n");
-        OperacoesMateriaPrima.addMateriaPrima(materiaPrima);
+        OperacoesMateriaPrima.adicionarMateriaPrima(materiaPrima);
     }
 
     public static double calcularMateriaPrima(MateriaPrima materiaPrima){

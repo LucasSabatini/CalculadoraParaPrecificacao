@@ -35,7 +35,7 @@ public class TelaPrincipal {
                 case 4 -> {
                     System.out.print("Digite o nome da matéria-prima que você deseja excluir: ");
                     String nome = sc.nextLine();
-                    OperacoesMateriaPrima.excluirMateriaPrima(nome);
+                    OperacoesMateriaPrima.deletarMateriaPrima(nome);
                 }
                 case 0 -> System.exit(0);
             }
