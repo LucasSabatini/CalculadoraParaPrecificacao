@@ -1,11 +1,16 @@
 package model;
 
+import jakarta.persistence.*;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class MateriaPrima {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nomeMP; //Nome da matéria-prima
     private double precoPagoMP; //Preço pago na matéria-prima;
@@ -15,7 +20,8 @@ public class MateriaPrima {
 
     private static final List<MateriaPrima> materiasPrimas = new ArrayList<>();
 
-
+    public MateriaPrima() {
+    }
 
     public MateriaPrima(double precoPagoMP, double pesoUsadoFormulacaoMP, double pesoCompradoMP) {
         this.precoPagoMP = precoPagoMP;
@@ -85,7 +91,7 @@ public class MateriaPrima {
     @Override
     public String toString() {
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        return "MateriaPrima{" +
+        return "\nMateriaPrima{" +
                 "id=" + id +
                 ", nomeMP='" + nomeMP + '\'' +
                 ", precoPagoMP=" + decimalFormat.format(precoPagoMP) +

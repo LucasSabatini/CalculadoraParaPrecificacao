@@ -6,7 +6,9 @@ import model.MateriaPrima;
 import java.util.List;
 import java.util.Scanner;
 
-public class OperacoesMateriaPrima {
+public class DAOMateriaPrima {
+
+    private static DAO<MateriaPrima> dao = new DAO<>(MateriaPrima.class);
 
     public static void adicionarMateriaPrima(MateriaPrima materiaPrima) {
         for (MateriaPrima consulta : MateriaPrima.getMateriaPrima()) {
@@ -15,15 +17,16 @@ public class OperacoesMateriaPrima {
                 consulta.setPesoUsadoFormulacaoMP(materiaPrima.getPesoUsadoFormulacaoMP());
                 consulta.setPesoCompradoMP(materiaPrima.getPesoCompradoMP());
                 consulta.setGastoFinalMP(Calculadora.calcularMateriaPrima(consulta));
+                dao.incluirCompleto(consulta);
                 return;
             }
         }
         MateriaPrima.getMateriaPrima().add(materiaPrima);
+        dao.incluirCompleto(materiaPrima);
     }
 
-    public static List<MateriaPrima> consultarHistorico() {
-        MateriaPrima.getMateriaPrima().forEach(System.out::println);
-        return MateriaPrima.getMateriaPrima();
+    public static List<MateriaPrima> consultarMateriasPrimas() {
+        return dao.consultarTodos();
     }
 
     public static void atualizarMateriaPrima(String nome) {

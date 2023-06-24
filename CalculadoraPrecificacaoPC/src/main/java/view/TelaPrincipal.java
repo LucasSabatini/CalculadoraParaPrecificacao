@@ -1,6 +1,6 @@
 package view;
 
-import infra.OperacoesMateriaPrima;
+import infra.DAOMateriaPrima;
 import model.Calculadora;
 
 import java.util.Scanner;
@@ -26,16 +26,16 @@ public class TelaPrincipal {
 
             switch (opcao) {
                 case 1 -> Calculadora.iniciarCalculadora();
-                case 2 -> OperacoesMateriaPrima.consultarHistorico();
+                case 2 -> DAOMateriaPrima.consultarMateriasPrimas();
                 case 3 -> {
                     System.out.print("Digite o nome da matéria-prima que você deseja atualizar: ");
                     String nome = sc.nextLine();
-                    OperacoesMateriaPrima.atualizarMateriaPrima(nome);
+                    DAOMateriaPrima.atualizarMateriaPrima(nome);
                 }
                 case 4 -> {
                     System.out.print("Digite o nome da matéria-prima que você deseja excluir: ");
                     String nome = sc.nextLine();
-                    OperacoesMateriaPrima.deletarMateriaPrima(nome);
+                    DAOMateriaPrima.deletarMateriaPrima(nome);
                 }
                 case 0 -> System.exit(0);
             }

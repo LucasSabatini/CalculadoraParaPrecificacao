@@ -1,6 +1,6 @@
 package model;
 
-import infra.OperacoesMateriaPrima;
+import infra.DAOMateriaPrima;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
@@ -31,7 +31,7 @@ public class Calculadora {
         materiaPrima.setGastoFinalMP(Calculadora.calcularMateriaPrima(materiaPrima));
 
         System.out.println("Valor da matéria-prima para esta formulação equivale a R$" + decimalFormat.format(Calculadora.calcularMateriaPrima(materiaPrima)) + "\n");
-        OperacoesMateriaPrima.adicionarMateriaPrima(materiaPrima);
+        DAOMateriaPrima.adicionarMateriaPrima(materiaPrima);
     }
 
     public static double calcularMateriaPrima(MateriaPrima materiaPrima){
