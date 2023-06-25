@@ -1,14 +1,11 @@
 package view;
 
-import controller.MateriaPrimaController;
-import model.Calculadora;
+import infra.DAOMateriaPrima;
 
 import java.util.Scanner;
 
-import static java.lang.System.in;
-
 public class TelaPrincipal {
-    Scanner sc = new Scanner(in);
+    Scanner sc = new Scanner(System.in);
 
     public void iniciarAplicativo() {
         int opcao;
@@ -16,8 +13,8 @@ public class TelaPrincipal {
 
         while (true) {
             System.out.println("Menu: ");
-            System.out.println("1 - Calcular nova matéria-prima");
-            System.out.println("2 - Consultar histórico");
+            System.out.println("1 - Calcular/Adicionar nova matéria-prima");
+            System.out.println("2 - Consultar lista de matérias-primas");
             System.out.println("3 - Atualizar matéria-prima");
             System.out.println("4 - Excluir matéria-prima");
             System.out.println("0 - Encerrar aplicativo");
@@ -26,17 +23,13 @@ public class TelaPrincipal {
             sc.nextLine();
 
             switch (opcao) {
-                case 1 -> Calculadora.iniciarCalculadora();
-                case 2 -> MateriaPrimaController.consultarMateriasPrimas();
-                case 3 -> {
-                    System.out.print("Digite o nome da matéria-prima que você deseja atualizar: ");
-                    String nome = sc.nextLine();
-                    MateriaPrimaController.atualizarMateriaPrima(nome);
-                }
+                case 1 -> DAOMateriaPrima.adicionarMateriaPrima();
+                case 2 -> DAOMateriaPrima.consultarMateriasPrimas();
+                case 3 -> DAOMateriaPrima.atualizarMateriaPrima();
                 case 4 -> {
                     System.out.print("Digite o nome da matéria-prima que você deseja excluir: ");
                     id = sc.nextInt();
-                    MateriaPrimaController.deletarMateriaPrima(id);
+                    DAOMateriaPrima.deletarMateriaPrima(id);
                 }
                 case 0 -> System.exit(0);
             }
