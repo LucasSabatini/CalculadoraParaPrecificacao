@@ -4,7 +4,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
-import model.MateriaPrima;
 
 import java.util.List;
 
@@ -52,21 +51,21 @@ public class DAO<T> {
     }
 
     public List<T> consultarTodos() {
+
         if(classe == null) {
             throw new UnsupportedOperationException("Classe nula");
         }
         String jpql = "SELECT e FROM " + classe.getName() + " e";
         TypedQuery<T> query = em.createQuery(jpql, classe);
-        query.setMaxResults(20);
-        query.setFirstResult(0);
-        System.out.println(query.getResultList());
+//        query.setMaxResults(20);
+//        query.setFirstResult(0);
         return query.getResultList();
     }
 
-    public DAO<T> atualizarMateriaPrima(T entidade) {
-        this.abrirTransacao();
+    public DAO<T> atualizarEntidade(T entidade) {
+        abrirTransacao();
         em.merge(entidade);
-        this.fecharTransacao();
+        fecharTransacao();
         return this;
     }
 
