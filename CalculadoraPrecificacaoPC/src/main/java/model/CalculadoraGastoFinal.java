@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Calculadora {
+public abstract class CalculadoraGastoFinal {
 
     public static double calcularMateriaPrima(MateriaPrima materiaPrima){
         double gastoFinalMP = 0;
