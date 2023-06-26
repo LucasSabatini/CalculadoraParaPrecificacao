@@ -3,6 +3,7 @@ package infra;
 import model.CalculadoraGastoFinal;
 import model.MateriaPrima;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Scanner;
@@ -13,21 +14,21 @@ public class DAOMateriaPrima {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void adicionarMateriaPrima() {
-        double precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP;
+        BigDecimal precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP;
         String nomeMP;
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
         System.out.print("Digite o nome da matéria-prima: ");
         nomeMP = scanner.nextLine();
         System.out.print("Digite o valor pago na matéria-prima: R$");
-        precoPagoMP = scanner.nextDouble();
+        precoPagoMP = scanner.nextBigDecimal();
         System.out.print("Digite o peso da matéria-prima usado na formulação: ");
-        pesoUsadoFormulacaoMP = scanner.nextDouble();
+        pesoUsadoFormulacaoMP = scanner.nextBigDecimal();
         System.out.print("Digite o peso total, em gramas, da matéria-prima comprada: ");
-        pesoCompradoMP = scanner.nextDouble();
+        pesoCompradoMP = scanner.nextBigDecimal();
 
         MateriaPrima materiaPrima = new MateriaPrima(nomeMP, precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP);
-        double gastoFinal = CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima);
+        BigDecimal gastoFinal = CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima);
         materiaPrima.setGastoFinalMP(gastoFinal);
 
         System.out.println("Valor da matéria-prima para esta formulação equivale a R$" + decimalFormat.format(gastoFinal) + "\n");
@@ -76,19 +77,19 @@ public class DAOMateriaPrima {
                     }
                     case 2 -> {
                         System.out.print("Digite o novo preço pago: ");
-                        consulta.setPrecoPagoMP(scanner.nextDouble());
+                        consulta.setPrecoPagoMP(scanner.nextBigDecimal());
                         consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
                         dao.atualizarEntidade(consulta);
                     }
                     case 3 -> {
                         System.out.print("Digite o novo peso usado na formulação: ");
-                        consulta.setPesoUsadoFormulacaoMP(scanner.nextDouble());
+                        consulta.setPesoUsadoFormulacaoMP(scanner.nextBigDecimal());
                         consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
                         dao.atualizarEntidade(consulta);
                     }
                     case 4 -> {
                         System.out.print("Digite o novo peso total comprado: ");
-                        consulta.setPesoCompradoMP(scanner.nextDouble());
+                        consulta.setPesoCompradoMP(scanner.nextBigDecimal());
                         consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
                         dao.atualizarEntidade(consulta);
                     }
@@ -107,9 +108,8 @@ public class DAOMateriaPrima {
                 dao.excluirEntidade(consulta);
                 System.out.println("Matéria-prima excluída com sucesso!");
                 return;
-            } else {
-                System.out.println("Matéria-prima não encontrada.");
             }
         }
+        System.out.println("Matéria-prima não encontrada!");
     }
 }

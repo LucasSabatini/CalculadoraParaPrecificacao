@@ -2,6 +2,7 @@ package model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,23 +14,27 @@ public class MateriaPrima {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nomeMP; //Nome da matéria-prima
-    private double precoPagoMP; //Preço pago na matéria-prima;
-    private double pesoUsadoFormulacaoMP; //Peso da matéria-prima usada na formulação;
-    private double pesoCompradoMP; //Peso comprado de matéria-prima;
-    private double gastoFinalMP; //Gasto da matéria-prima na formulação;
+//    private double precoPagoMP; //Preço pago na matéria-prima;
+//    private double pesoUsadoFormulacaoMP; //Peso da matéria-prima usada na formulação;
+//    private double pesoCompradoMP; //Peso comprado de matéria-prima;
+//    private double gastoFinalMP; //Gasto da matéria-prima na formulação;
+    private BigDecimal precoPagoMP = new BigDecimal("0");
+    private BigDecimal pesoUsadoFormulacaoMP = new BigDecimal("0");
+    private BigDecimal pesoCompradoMP = new BigDecimal("0");
+    private BigDecimal gastoFinalMP = new BigDecimal("0");
 
     private static final List<MateriaPrima> materiasPrimas = new ArrayList<>();
 
     public MateriaPrima() {
     }
 
-    public MateriaPrima(double precoPagoMP, double pesoUsadoFormulacaoMP, double pesoCompradoMP) {
+    public MateriaPrima(BigDecimal precoPagoMP, BigDecimal pesoUsadoFormulacaoMP, BigDecimal pesoCompradoMP) {
         this.precoPagoMP = precoPagoMP;
         this.pesoUsadoFormulacaoMP = pesoUsadoFormulacaoMP;
         this.pesoCompradoMP = pesoCompradoMP;
     }
 
-    public MateriaPrima(String nomeMP, double precoPagoMP, double pesoUsadoFormulacaoMP, double pesoCompradoMP) {
+    public MateriaPrima(String nomeMP, BigDecimal precoPagoMP, BigDecimal pesoUsadoFormulacaoMP, BigDecimal pesoCompradoMP) {
         this.nomeMP = nomeMP;
         this.precoPagoMP = precoPagoMP;
         this.pesoUsadoFormulacaoMP = pesoUsadoFormulacaoMP;
@@ -40,10 +45,6 @@ public class MateriaPrima {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNomeMP() {
         return nomeMP;
     }
@@ -52,35 +53,35 @@ public class MateriaPrima {
         this.nomeMP = nomeMP;
     }
 
-    public double getPrecoPagoMP(){
+    public BigDecimal getPrecoPagoMP(){
         return precoPagoMP;
     }
 
-    public void setPrecoPagoMP(double precoPagoMP){
+    public void setPrecoPagoMP(BigDecimal precoPagoMP){
         this.precoPagoMP = precoPagoMP;
     }
 
-    public double getPesoUsadoFormulacaoMP(){
+    public BigDecimal getPesoUsadoFormulacaoMP(){
         return pesoUsadoFormulacaoMP;
     }
 
-    public void setPesoUsadoFormulacaoMP(double pesoUsadoFormulacaoMP){
+    public void setPesoUsadoFormulacaoMP(BigDecimal pesoUsadoFormulacaoMP){
         this.pesoUsadoFormulacaoMP = pesoUsadoFormulacaoMP;
     }
 
-    public double getPesoCompradoMP(){
+    public BigDecimal getPesoCompradoMP(){
         return pesoCompradoMP;
     }
 
-    public void setPesoCompradoMP(double pesoCompradoMP){
+    public void setPesoCompradoMP(BigDecimal pesoCompradoMP){
         this.pesoCompradoMP = pesoCompradoMP;
     }
 
-    public double getGastoFinalMP(){
+    public BigDecimal getGastoFinalMP(){
         return gastoFinalMP;
     }
 
-    public void setGastoFinalMP(double gastoFinalMP){
+    public void setGastoFinalMP(BigDecimal gastoFinalMP){
         this.gastoFinalMP = gastoFinalMP;
     }
 
@@ -106,11 +107,11 @@ public class MateriaPrima {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MateriaPrima that = (MateriaPrima) o;
-        return Double.compare(that.precoPagoMP, precoPagoMP) == 0 && Double.compare(that.pesoUsadoFormulacaoMP, pesoUsadoFormulacaoMP) == 0 && Double.compare(that.pesoCompradoMP, pesoCompradoMP) == 0 && Double.compare(that.gastoFinalMP, gastoFinalMP) == 0 && Objects.equals(nomeMP, that.nomeMP);
+        return id == that.id && Objects.equals(nomeMP, that.nomeMP) && Objects.equals(precoPagoMP, that.precoPagoMP) && Objects.equals(pesoUsadoFormulacaoMP, that.pesoUsadoFormulacaoMP) && Objects.equals(pesoCompradoMP, that.pesoCompradoMP) && Objects.equals(gastoFinalMP, that.gastoFinalMP);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nomeMP, precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP, gastoFinalMP);
+        return Objects.hash(id, nomeMP, precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP, gastoFinalMP);
     }
 }
