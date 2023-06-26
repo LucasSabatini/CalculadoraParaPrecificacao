@@ -14,14 +14,10 @@ public class MateriaPrima {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nomeMP; //Nome da matéria-prima
-//    private double precoPagoMP; //Preço pago na matéria-prima;
-//    private double pesoUsadoFormulacaoMP; //Peso da matéria-prima usada na formulação;
-//    private double pesoCompradoMP; //Peso comprado de matéria-prima;
-//    private double gastoFinalMP; //Gasto da matéria-prima na formulação;
-    private BigDecimal precoPagoMP = new BigDecimal("0");
-    private BigDecimal pesoUsadoFormulacaoMP = new BigDecimal("0");
-    private BigDecimal pesoCompradoMP = new BigDecimal("0");
-    private BigDecimal gastoFinalMP = new BigDecimal("0");
+    private BigDecimal precoPagoMP = new BigDecimal("0"); //Preço pago na matéria-prima
+    private BigDecimal pesoUsadoFormulacaoMP = new BigDecimal("0"); //Peso da matéria-prima usada na formulação
+    private BigDecimal pesoCompradoMP = new BigDecimal("0"); //Peso comprado de matéria-prima
+    private BigDecimal gastoFinalMP = new BigDecimal("0"); //Gasto final da matéria-prima na formulação
 
     private static final List<MateriaPrima> materiasPrimas = new ArrayList<>();
 

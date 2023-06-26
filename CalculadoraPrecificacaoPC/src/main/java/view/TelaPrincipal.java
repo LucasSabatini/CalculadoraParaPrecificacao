@@ -5,12 +5,9 @@ import infra.DAOMateriaPrima;
 import java.util.Scanner;
 
 public class TelaPrincipal {
-    Scanner sc = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
     public void iniciarAplicativo() {
-        int opcao;
-        int id;
-
         while (true) {
             System.out.println("Menu: ");
             System.out.println("1 - Calcular/Adicionar nova matéria-prima");
@@ -19,8 +16,8 @@ public class TelaPrincipal {
             System.out.println("4 - Excluir matéria-prima");
             System.out.println("0 - Encerrar aplicativo");
             System.out.print("Digite o número da opção desejada: ");
-            opcao = sc.nextInt();
-            sc.nextLine();
+            int opcao = scanner.nextInt();
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1 -> DAOMateriaPrima.adicionarMateriaPrima();
