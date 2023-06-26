@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class TelaPrincipal {
     Scanner scanner = new Scanner(System.in);
 
-    public void iniciarAplicativo() {
+    public void iniciarAplicativo(){
         while (true) {
             System.out.println("Menu: ");
             System.out.println("1 - Calcular/Adicionar nova matéria-prima");

@@ -72,26 +72,42 @@ public class DAOMateriaPrima {
                 switch (opcao) {
                     case 1 -> {
                         System.out.print("Digite o novo nome: ");
-                        consulta.setNomeMP(scanner.nextLine());
-                        dao.atualizarEntidade(consulta);
+                        try {
+                            consulta.setNomeMP(scanner.nextLine());
+                            dao.atualizarEntidade(consulta);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                     case 2 -> {
                         System.out.print("Digite o novo preço pago: ");
-                        consulta.setPrecoPagoMP(scanner.nextBigDecimal());
-                        consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
-                        dao.atualizarEntidade(consulta);
+                        try{
+                            consulta.setPrecoPagoMP(scanner.nextBigDecimal());
+                            consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
+                            dao.atualizarEntidade(consulta);
+                        } catch(Exception i) {
+                            System.out.println("Caractere inválido. Produto não atualizado");
+                        }
                     }
                     case 3 -> {
                         System.out.print("Digite o novo peso usado na formulação: ");
-                        consulta.setPesoUsadoFormulacaoMP(scanner.nextBigDecimal());
-                        consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
-                        dao.atualizarEntidade(consulta);
+                        try {
+                            consulta.setPesoUsadoFormulacaoMP(scanner.nextBigDecimal());
+                            consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
+                            dao.atualizarEntidade(consulta);
+                        } catch(Exception e) {
+                            System.out.println("Caractere inválido. Produto não atualizado");
+                        }
                     }
                     case 4 -> {
                         System.out.print("Digite o novo peso total comprado: ");
-                        consulta.setPesoCompradoMP(scanner.nextBigDecimal());
-                        consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
-                        dao.atualizarEntidade(consulta);
+                        try {
+                            consulta.setPesoCompradoMP(scanner.nextBigDecimal());
+                            consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
+                            dao.atualizarEntidade(consulta);
+                        } catch(Exception e) {
+                            System.out.println("Caractere inválido. Produto não atualizado");
+                        }
                     }
                 }
                 System.out.println(consulta); //exibir produto atualizado
