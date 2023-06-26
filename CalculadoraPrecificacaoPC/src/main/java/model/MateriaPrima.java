@@ -36,7 +36,7 @@ public class MateriaPrima {
         this.pesoCompradoMP = pesoCompradoMP;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

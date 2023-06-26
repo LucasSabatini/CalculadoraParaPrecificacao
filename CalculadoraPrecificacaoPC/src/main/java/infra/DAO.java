@@ -1,17 +1,14 @@
 package infra;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 
 import java.util.List;
 
 public class DAO<T> {
 
     private static EntityManagerFactory emf;
-    private EntityManager em;
-    private Class<T> classe;
+    private final EntityManager em;
+    private final Class<T> classe;
 
     static {
         try {
@@ -67,6 +64,12 @@ public class DAO<T> {
         em.merge(entidade);
         fecharTransacao();
         return this;
+    }
+
+    public void excluirEntidade(T entidade) {
+        abrirTransacao();
+        em.remove(entidade);
+        fecharTransacao();
     }
 
     public void fecharDAO() {

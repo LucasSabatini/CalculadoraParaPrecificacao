@@ -39,11 +39,13 @@ public class DAOMateriaPrima {
                 consulta.setPesoCompradoMP(materiaPrima.getPesoCompradoMP());
                 consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
                 dao.atualizarEntidade(consulta);
+                scanner.nextLine();
                 return;
             }
         }
         dao.incluirCompleto(materiaPrima);
         System.out.println(materiaPrima);
+        scanner.nextLine();
     }
 
     public static List<MateriaPrima> consultarMateriasPrimas() {
@@ -96,16 +98,18 @@ public class DAOMateriaPrima {
         }
     }
 
-    public static void deletarMateriaPrima(int id) {
-        for (MateriaPrima consulta : MateriaPrima.getMateriaPrima()) {
+    public static void excluirMateriaPrima() {
+        System.out.print("Digite o id da matéria-prima que você deseja excluir: ");
+        int id = scanner.nextInt();
+
+        for (MateriaPrima consulta : dao.consultarTodos()) {
             if (consulta.getId() == id) {
-                MateriaPrima.getMateriaPrima().remove(consulta);
-                //dao. // imple. método delete
+                dao.excluirEntidade(consulta);
                 System.out.println("Matéria-prima excluída com sucesso!");
+                return;
             } else {
                 System.out.println("Matéria-prima não encontrada.");
             }
-            return;
         }
     }
 }

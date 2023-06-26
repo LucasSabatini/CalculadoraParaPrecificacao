@@ -26,11 +26,7 @@ public class TelaPrincipal {
                 case 1 -> DAOMateriaPrima.adicionarMateriaPrima();
                 case 2 -> DAOMateriaPrima.consultarMateriasPrimas();
                 case 3 -> DAOMateriaPrima.atualizarMateriaPrima();
-                case 4 -> {
-                    System.out.print("Digite o nome da matéria-prima que você deseja excluir: ");
-                    id = sc.nextInt();
-                    DAOMateriaPrima.deletarMateriaPrima(id);
-                }
+                case 4 -> DAOMateriaPrima.excluirMateriaPrima();
                 case 0 -> System.exit(0);
             }
         }
