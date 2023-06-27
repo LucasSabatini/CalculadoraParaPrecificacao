@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class TelaPrincipal {
 
     public void iniciarAplicativo() {
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("Menu: ");
@@ -19,8 +18,8 @@ public class TelaPrincipal {
             System.out.println("0 - Encerrar aplicativo");
             System.out.print("Digite o número da opção desejada: ");
             try {
+                Scanner scanner = new Scanner(System.in);
                 int opcao = scanner.nextInt();
-                scanner.nextLine();
 
                 switch (opcao) {
                     case 1 -> DAOMateriaPrima.adicionarMateriaPrima();
@@ -32,7 +31,6 @@ public class TelaPrincipal {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Digite o número de uma das opções do menu.");
-                scanner.nextLine();
             }
         }
     }
