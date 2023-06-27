@@ -41,6 +41,7 @@ public class DAOMateriaPrima {
                 consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
                 dao.atualizarEntidade(consulta);
                 scanner.nextLine();
+                scanner.nextLine();
                 return;
             }
         }
