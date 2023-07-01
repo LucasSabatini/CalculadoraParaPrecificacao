@@ -1,4 +1,4 @@
-package exceptions;
+package infrastructure.exceptions;
 
 public class IdNaoEncontradoException extends RuntimeException {
     private final int id;

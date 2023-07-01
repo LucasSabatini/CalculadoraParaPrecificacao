@@ -1,4 +1,4 @@
-package infra;
+package infrastructure;
 
 import jakarta.persistence.*;
 

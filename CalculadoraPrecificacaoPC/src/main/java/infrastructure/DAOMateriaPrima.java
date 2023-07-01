@@ -1,13 +1,12 @@
-package infra;
+package infrastructure;
 
-import exceptions.IdNaoEncontradoException;
+import infrastructure.exceptions.IdNaoEncontradoException;
 import model.CalculadoraGastoFinal;
 import model.MateriaPrima;
 import model.Validar;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
