@@ -1,7 +1,6 @@
 package model;
 
-
-import exceptions.CampoVazioException;
+import infrastructure.exceptions.CampoVazioException;
 
 public class Validar {
 

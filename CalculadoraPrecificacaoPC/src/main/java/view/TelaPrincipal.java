@@ -1,8 +1,8 @@
 package view;
 
-import exceptions.CampoVazioException;
-import exceptions.IdNaoEncontradoException;
-import infra.DAOMateriaPrima;
+import infrastructure.exceptions.CampoVazioException;
+import infrastructure.exceptions.IdNaoEncontradoException;
+import infrastructure.DAOMateriaPrima;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
