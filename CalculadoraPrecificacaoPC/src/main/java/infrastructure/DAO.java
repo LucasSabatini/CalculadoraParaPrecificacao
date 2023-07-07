@@ -1,6 +1,7 @@
 package infrastructure;
 
 import jakarta.persistence.*;
+import model.MateriaPrima;
 
 import java.util.List;
 
@@ -38,12 +39,12 @@ public class DAO<T> {
         return this;
     }
 
-    public DAO<T> incluir(T entidade) {
+    public DAO<T> incluir(MateriaPrima entidade) {
         em.persist(entidade);
         return this;
     }
 
-    public DAO<T> incluirCompleto(T entidade) {
+    public DAO<T> incluirCompleto(MateriaPrima entidade) {
         return this.abrirTransacao().incluir(entidade).fecharTransacao();
     }
 

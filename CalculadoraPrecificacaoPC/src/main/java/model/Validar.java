@@ -8,7 +8,7 @@ public class Validar {
 
     }
 
-    public static void materiaPrima(MateriaPrima materiaPrima) {
+    public static boolean materiaPrima(MateriaPrima materiaPrima) {
         if (materiaPrima.getPrecoPagoMP() == null) {
             throw new CampoVazioException("preço pago");
         }
@@ -18,6 +18,7 @@ public class Validar {
         if (materiaPrima.getPesoCompradoMP() == null) {
             throw new CampoVazioException("peso comprado");
         }
+        return true;
     }
 
 }

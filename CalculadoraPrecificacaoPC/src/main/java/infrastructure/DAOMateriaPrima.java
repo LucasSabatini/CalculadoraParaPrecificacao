@@ -15,7 +15,7 @@ public class DAOMateriaPrima {
     private static final DAO<MateriaPrima> dao = new DAO<>(MateriaPrima.class);
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void adicionarMateriaPrima() {
+    public static MateriaPrima adicionarMateriaPrima() {
         BigDecimal precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP, gastoFinal;
         String nomeMP;
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
@@ -44,11 +44,12 @@ public class DAOMateriaPrima {
                 consulta.setPesoCompradoMP(materiaPrima.getPesoCompradoMP());
                 consulta.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(consulta));
                 dao.atualizarEntidade(consulta);
-                return;
+                return consulta;
             }
         }
         dao.incluirCompleto(materiaPrima);
         System.out.println(materiaPrima);
+        return materiaPrima;
     }
 
     public static List<MateriaPrima> consultarMateriasPrimas() {
@@ -56,7 +57,7 @@ public class DAOMateriaPrima {
         return dao.consultarTodos();
     }
 
-    public static void atualizarMateriaPrima() {
+    public static MateriaPrima atualizarMateriaPrima() {
         System.out.print("Digite o id da matéria-prima que você deseja atualizar: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -98,6 +99,7 @@ public class DAOMateriaPrima {
                     }
                 }
                 System.out.println(consulta); //exibir produto atualizado
+                return consulta;
             }
         }
         throw new IdNaoEncontradoException(id);
