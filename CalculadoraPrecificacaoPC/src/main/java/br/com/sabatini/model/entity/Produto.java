@@ -1,4 +1,4 @@
-package br.com.sabatini.model.entities;
+package br.com.sabatini.model.entity;
 
 public class Produto {
     private String nomeProduto; //Nome do seu produto final

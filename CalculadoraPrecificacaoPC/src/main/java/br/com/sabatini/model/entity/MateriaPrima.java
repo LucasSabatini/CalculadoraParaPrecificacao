@@ -1,5 +1,6 @@
-package br.com.sabatini.model.entities;
+package br.com.sabatini.model.entity;
 
+import br.com.sabatini.model.CalculadoraGastoFinal;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -14,13 +15,21 @@ public class MateriaPrima {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nomeMP; //Nome da matéria-prima
-    private BigDecimal precoPagoMP; //Preço pago na matéria-prima
-    private BigDecimal pesoUsadoFormulacaoMP; //Peso da matéria-prima usada na formulação
-    private BigDecimal pesoCompradoMP; //Peso comprado de matéria-prima
-    private BigDecimal gastoFinalMP; //Gasto final da matéria-prima na formulação
 
-    private static final List<MateriaPrima> materiasPrimas = new ArrayList<>();
+    @Column(name = "nomeMP")
+    private String nomeMP; //Nome da matéria-prima
+
+    @Column(name = "precoPagoMP")
+    private BigDecimal precoPagoMP; //Preço pago na matéria-prima
+
+    @Column(name = "pesoUsadoFormulacaoMP")
+    private BigDecimal pesoUsadoFormulacaoMP; //Peso da matéria-prima usada na formulação
+
+    @Column(name = "pesoCompradoMP")
+    private BigDecimal pesoCompradoMP; //Peso comprado de matéria-prima
+
+    @Column(name = "gastoFinalMP")
+    private BigDecimal gastoFinalMP; //Gasto final da matéria-prima na formulação
 
     public MateriaPrima() {
     }
@@ -82,15 +91,12 @@ public class MateriaPrima {
     }
 
     public BigDecimal getGastoFinalMP(){
+        CalculadoraGastoFinal.calcularMateriaPrima(this);
         return gastoFinalMP;
     }
 
     public void setGastoFinalMP(BigDecimal gastoFinalMP){
         this.gastoFinalMP = gastoFinalMP;
-    }
-
-    public static List<MateriaPrima> getMateriaPrima() {
-        return materiasPrimas;
     }
 
     @Override
