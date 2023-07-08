@@ -5,7 +5,7 @@
              version="3.0">
     <persistence-unit name="calculadora_precificacao">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>model.MateriaPrima</class>
+        <class>br.com.sabatini.model.entity.MateriaPrima</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
