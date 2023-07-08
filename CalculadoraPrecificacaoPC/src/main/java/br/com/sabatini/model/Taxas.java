@@ -1,4 +1,4 @@
-package model;
+package br.com.sabatini.model;
 
 public class Taxas {
     private float forcaDeTrabalho = 0.15F; //.15% (real.: taxa variável) de taxas da força de trabalho;

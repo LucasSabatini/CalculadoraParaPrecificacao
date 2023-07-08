@@ -1,6 +1,7 @@
-package model;
+package br.com.sabatini.model;
 
-import infrastructure.exceptions.CampoVazioException;
+import br.com.sabatini.infrastructure.exceptions.CampoVazioException;
+import br.com.sabatini.model.entity.MateriaPrima;
 
 public class Validar {
 

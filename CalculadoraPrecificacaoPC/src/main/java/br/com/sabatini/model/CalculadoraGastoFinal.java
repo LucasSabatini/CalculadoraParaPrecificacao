@@ -1,4 +1,6 @@
-package model;
+package br.com.sabatini.model;
+
+import br.com.sabatini.model.entity.MateriaPrima;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
