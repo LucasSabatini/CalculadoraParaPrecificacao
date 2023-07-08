@@ -1,4 +1,4 @@
-package model;
+package br.com.sabatini.model.entities;
 
 import jakarta.persistence.*;
 
@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Table(name = "materia_prima")
 @Entity
 public class MateriaPrima {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nomeMP; //Nome da matéria-prima
     private BigDecimal precoPagoMP; //Preço pago na matéria-prima
     private BigDecimal pesoUsadoFormulacaoMP; //Peso da matéria-prima usada na formulação
@@ -30,6 +31,13 @@ public class MateriaPrima {
         this.pesoCompradoMP = pesoCompradoMP;
     }
 
+    public MateriaPrima(MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
+        this.nomeMP = materiaPrimaRequestDTO.nomeMP();
+        this.precoPagoMP = materiaPrimaRequestDTO.precoPagoMP();
+        this.pesoUsadoFormulacaoMP = materiaPrimaRequestDTO.pesoUsadoFormulacaoMP();
+        this.pesoCompradoMP = materiaPrimaRequestDTO.pesoCompradoMP();
+    }
+
     public MateriaPrima(String nomeMP, BigDecimal precoPagoMP, BigDecimal pesoUsadoFormulacaoMP, BigDecimal pesoCompradoMP) {
         this.nomeMP = nomeMP;
         this.precoPagoMP = precoPagoMP;
@@ -37,7 +45,7 @@ public class MateriaPrima {
         this.pesoCompradoMP = pesoCompradoMP;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -103,7 +111,7 @@ public class MateriaPrima {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MateriaPrima that = (MateriaPrima) o;
-        return id == that.id && Objects.equals(nomeMP, that.nomeMP) && Objects.equals(precoPagoMP, that.precoPagoMP) && Objects.equals(pesoUsadoFormulacaoMP, that.pesoUsadoFormulacaoMP) && Objects.equals(pesoCompradoMP, that.pesoCompradoMP) && Objects.equals(gastoFinalMP, that.gastoFinalMP);
+        return Objects.equals(id, that.id) && Objects.equals(nomeMP, that.nomeMP) && Objects.equals(precoPagoMP, that.precoPagoMP) && Objects.equals(pesoUsadoFormulacaoMP, that.pesoUsadoFormulacaoMP) && Objects.equals(pesoCompradoMP, that.pesoCompradoMP) && Objects.equals(gastoFinalMP, that.gastoFinalMP);
     }
 
     @Override

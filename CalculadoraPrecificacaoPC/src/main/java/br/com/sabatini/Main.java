@@ -1,5 +1,3 @@
-package view;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,9 +7,9 @@ public class Main {
 
         SpringApplication.run(Main.class, args);
 
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        //TelaPrincipal telaPrincipal = new TelaPrincipal();
 
-        System.out.println("*** Seja bem-vinda! ***");
-        telaPrincipal.iniciarAplicativo();
+        //System.out.println("*** Seja bem-vinda! ***");
+        //telaPrincipal.iniciarAplicativo();
     }
 }

@@ -1,9 +1,9 @@
-package infrastructure.exceptions;
+package br.com.sabatini.infrastructure.exceptions;
 
 public class IdNaoEncontradoException extends RuntimeException {
-    private final int id;
+    private final Long id;
 
-    public IdNaoEncontradoException(int id) {
+    public IdNaoEncontradoException(Long id) {
         this.id = id;
     }
 
