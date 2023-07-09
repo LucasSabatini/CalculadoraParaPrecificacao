@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/materiaprima")
 public class MateriaPrimaController {
@@ -16,7 +18,6 @@ public class MateriaPrimaController {
     @Autowired
     private MateriaPrimaRepository materiaPrimaRepository;
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public @ResponseBody MateriaPrima adicionarMateriaPrima(@RequestBody MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
         MateriaPrima materiaPrima = new MateriaPrima(materiaPrimaRequestDTO);
@@ -24,13 +25,16 @@ public class MateriaPrimaController {
         return materiaPrima;
     }
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public List<MateriaPrimaResponseDTO> consultarTodos() {
         return materiaPrimaRepository.findAll().stream().map(MateriaPrimaResponseDTO::new).toList();
     }
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping(path = "/{id}")
+    public Optional<MateriaPrima> consultarPorId(@PathVariable Long id) {
+        return materiaPrimaRepository.findById(id);
+    }
+
     @PutMapping
     public void atualizarMateriaPrima() {
 
