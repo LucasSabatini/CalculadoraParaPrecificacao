@@ -1,9 +1,9 @@
 package br.com.sabatini.model.dao;
 
-import br.com.sabatini.infrastructure.exceptions.IdNaoEncontradoException;
-import br.com.sabatini.model.CalculadoraGastoFinal;
+import br.com.sabatini.exception.IdNaoEncontradoException;
+import br.com.sabatini.model.service.CalculadoraGastoFinal;
 import br.com.sabatini.model.entity.MateriaPrima;
-import br.com.sabatini.model.Validar;
+import br.com.sabatini.model.service.Validar;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -31,7 +31,7 @@ public class DAOMateriaPrima {
         scanner.nextLine();
 
         MateriaPrima materiaPrima = new MateriaPrima(nomeMP, precoPagoMP, pesoUsadoFormulacaoMP, pesoCompradoMP);
-        Validar.materiaPrima(materiaPrima);
+        Validar.validarMateriaPrima(materiaPrima);
 
         gastoFinal = CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima);
         materiaPrima.setGastoFinalMP(gastoFinal);

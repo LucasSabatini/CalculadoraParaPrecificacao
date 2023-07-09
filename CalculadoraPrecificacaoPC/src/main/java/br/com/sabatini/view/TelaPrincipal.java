@@ -1,7 +1,7 @@
 package br.com.sabatini.view;
 
-import br.com.sabatini.infrastructure.exceptions.CampoVazioException;
-import br.com.sabatini.infrastructure.exceptions.IdNaoEncontradoException;
+import br.com.sabatini.exception.CampoVazioException;
+import br.com.sabatini.exception.IdNaoEncontradoException;
 import br.com.sabatini.model.dao.DAOMateriaPrima;
 
 import java.util.InputMismatchException;

@@ -1,4 +1,4 @@
-package br.com.sabatini.model;
+package br.com.sabatini.model.service;
 
 import br.com.sabatini.model.entity.MateriaPrima;
 

@@ -1,12 +1,11 @@
 package br.com.sabatini.model.entity;
 
-import br.com.sabatini.model.CalculadoraGastoFinal;
+import br.com.sabatini.model.service.CalculadoraGastoFinal;
+import br.com.sabatini.model.dto.MateriaPrimaRequestDTO;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Table(name = "materia_prima")

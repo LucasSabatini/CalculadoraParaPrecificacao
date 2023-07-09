@@ -1,4 +1,6 @@
-package br.com.sabatini.model.entity;
+package br.com.sabatini.model.dto;
+
+import br.com.sabatini.model.entity.MateriaPrima;
 
 import java.math.BigDecimal;
 
