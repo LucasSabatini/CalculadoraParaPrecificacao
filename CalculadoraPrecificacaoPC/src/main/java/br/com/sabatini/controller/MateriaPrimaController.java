@@ -1,14 +1,14 @@
 package br.com.sabatini.controller;
 
+import br.com.sabatini.exception.IdNaoEncontradoException;
 import br.com.sabatini.model.repository.MateriaPrimaRepository;
-import br.com.sabatini.model.entity.MateriaPrimaRequestDTO;
-import br.com.sabatini.model.entity.MateriaPrimaResponseDTO;
+import br.com.sabatini.model.dto.MateriaPrimaRequestDTO;
+import br.com.sabatini.model.dto.MateriaPrimaResponseDTO;
 import br.com.sabatini.model.entity.MateriaPrima;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -31,12 +31,13 @@ public class MateriaPrimaController {
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<MateriaPrima> consultarPorId(@PathVariable Long id) {
-        return materiaPrimaRepository.findById(id);
+    public MateriaPrimaResponseDTO consultarPorId(@PathVariable Long id) {
+        return materiaPrimaRepository.findById(id).map(MateriaPrimaResponseDTO::new).orElseThrow(() -> new IdNaoEncontradoException(id));
     }
 
     @PutMapping
-    public void atualizarMateriaPrima() {
-
+    public MateriaPrima atualizarMateriaPrima(@RequestBody MateriaPrima materiaPrima) {
+        materiaPrimaRepository.save(materiaPrima);
+        return materiaPrima;
     }
 }
