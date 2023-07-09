@@ -1,4 +1,4 @@
-package br.com.sabatini.exceptions;
+package br.com.sabatini.exception;
 
 public class IdNaoEncontradoException extends RuntimeException {
     private final Long id;
