@@ -1,4 +1,4 @@
-package br.com.sabatini.infrastructure.exceptions;
+package br.com.sabatini.exceptions;
 
 public class CampoVazioException extends RuntimeException {
 
