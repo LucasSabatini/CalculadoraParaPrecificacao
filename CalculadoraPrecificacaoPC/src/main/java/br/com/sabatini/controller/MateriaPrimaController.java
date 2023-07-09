@@ -1,11 +1,10 @@
 package br.com.sabatini.controller;
 
-import br.com.sabatini.exception.IdNaoEncontradoException;
-import br.com.sabatini.model.repository.MateriaPrimaRepository;
 import br.com.sabatini.model.dto.MateriaPrimaRequestDTO;
 import br.com.sabatini.model.dto.MateriaPrimaResponseDTO;
-import br.com.sabatini.model.entity.MateriaPrima;
+import br.com.sabatini.model.service.MateriaPrimaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,28 +15,29 @@ import java.util.List;
 public class MateriaPrimaController {
 
     @Autowired
-    private MateriaPrimaRepository materiaPrimaRepository;
+    private MateriaPrimaService materiaPrimaService;
 
     @PostMapping
-    public @ResponseBody MateriaPrima adicionarMateriaPrima(@RequestBody MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
-        MateriaPrima materiaPrima = new MateriaPrima(materiaPrimaRequestDTO);
-        materiaPrimaRepository.save(materiaPrima);
-        return materiaPrima;
+    public @ResponseBody ResponseEntity<MateriaPrimaResponseDTO> adicionarMateriaPrima(@RequestBody MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
+        MateriaPrimaResponseDTO materiaPrima = materiaPrimaService.adicionarMateriaPrima(materiaPrimaRequestDTO);
+        return ResponseEntity.ok(materiaPrima);
     }
 
     @GetMapping
-    public List<MateriaPrimaResponseDTO> consultarTodos() {
-        return materiaPrimaRepository.findAll().stream().map(MateriaPrimaResponseDTO::new).toList();
+    public ResponseEntity<List<MateriaPrimaResponseDTO>> consultarTodos() {
+        List<MateriaPrimaResponseDTO> materiaPrimaResponseDTO = materiaPrimaService.consultarTodos();
+        return ResponseEntity.ok(materiaPrimaResponseDTO);
     }
 
     @GetMapping(path = "/{id}")
-    public MateriaPrimaResponseDTO consultarPorId(@PathVariable Long id) {
-        return materiaPrimaRepository.findById(id).map(MateriaPrimaResponseDTO::new).orElseThrow(() -> new IdNaoEncontradoException(id));
+    public ResponseEntity<MateriaPrimaResponseDTO> consultarPorId(@PathVariable Long id) {
+        MateriaPrimaResponseDTO materiaPrimaResponseDTO = materiaPrimaService.consultarPorId(id);
+        return ResponseEntity.ok(materiaPrimaResponseDTO);
     }
 
-    @PutMapping
-    public MateriaPrima atualizarMateriaPrima(@RequestBody MateriaPrima materiaPrima) {
-        materiaPrimaRepository.save(materiaPrima);
-        return materiaPrima;
-    }
+//    @PutMapping
+//    public MateriaPrima atualizarMateriaPrima(@RequestBody MateriaPrima materiaPrima) {
+//        materiaPrimaService.save(materiaPrima);
+//        return materiaPrima;
+//    }
 }
