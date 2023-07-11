@@ -1,8 +1,10 @@
 package br.com.sabatini.model.entity;
 
+import br.com.sabatini.model.dto.MateriaPrimaResponseDTO;
 import br.com.sabatini.model.service.CalculadoraGastoFinal;
 import br.com.sabatini.model.dto.MateriaPrimaRequestDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -15,7 +17,7 @@ public class MateriaPrima {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nomeMP")
+    @Column(name = "nomeMP", nullable = false)
     private String nomeMP; //Nome da matéria-prima
 
     @Column(name = "precoPagoMP")
@@ -51,6 +53,13 @@ public class MateriaPrima {
         this.precoPagoMP = precoPagoMP;
         this.pesoUsadoFormulacaoMP = pesoUsadoFormulacaoMP;
         this.pesoCompradoMP = pesoCompradoMP;
+    }
+
+    public MateriaPrima(MateriaPrimaResponseDTO materiaPrimaResponseDTO) {
+        this.nomeMP = materiaPrimaResponseDTO.nomeMP();
+        this.precoPagoMP = materiaPrimaResponseDTO.precoPagoMP();
+        this.pesoUsadoFormulacaoMP = materiaPrimaResponseDTO.pesoUsadoFormulacaoMP();
+        this.pesoCompradoMP = materiaPrimaResponseDTO.pesoCompradoMP();
     }
 
     public Long getId() {
