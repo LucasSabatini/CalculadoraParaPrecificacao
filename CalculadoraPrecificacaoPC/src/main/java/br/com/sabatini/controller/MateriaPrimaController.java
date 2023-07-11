@@ -4,6 +4,7 @@ import br.com.sabatini.model.dto.MateriaPrimaRequestDTO;
 import br.com.sabatini.model.dto.MateriaPrimaResponseDTO;
 import br.com.sabatini.model.service.MateriaPrimaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,24 +21,24 @@ public class MateriaPrimaController {
     @PostMapping
     public @ResponseBody ResponseEntity<MateriaPrimaResponseDTO> adicionarMateriaPrima(@RequestBody MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
         MateriaPrimaResponseDTO materiaPrima = materiaPrimaService.adicionarMateriaPrima(materiaPrimaRequestDTO);
-        return ResponseEntity.ok(materiaPrima);
+        return ResponseEntity.ok().body(materiaPrima);
     }
 
     @GetMapping
     public ResponseEntity<List<MateriaPrimaResponseDTO>> consultarTodos() {
         List<MateriaPrimaResponseDTO> materiaPrimaResponseDTO = materiaPrimaService.consultarTodos();
-        return ResponseEntity.ok(materiaPrimaResponseDTO);
+        return ResponseEntity.ok().body(materiaPrimaResponseDTO);
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<MateriaPrimaResponseDTO> consultarPorId(@PathVariable Long id) {
         MateriaPrimaResponseDTO materiaPrimaResponseDTO = materiaPrimaService.consultarPorId(id);
-        return ResponseEntity.ok(materiaPrimaResponseDTO);
+        return ResponseEntity.ok().body(materiaPrimaResponseDTO);
     }
 
-//    @PutMapping
-//    public MateriaPrima atualizarMateriaPrima(@RequestBody MateriaPrima materiaPrima) {
-//        materiaPrimaService.save(materiaPrima);
-//        return materiaPrima;
-//    }
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<MateriaPrimaResponseDTO> atualizarMateriaPrima(@PathVariable Long id, @RequestBody MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
+        MateriaPrimaResponseDTO materiaPrimaResponseDTO = materiaPrimaService.atualizarMateriaPrima(id, materiaPrimaRequestDTO);
+        return ResponseEntity.ok().body(materiaPrimaResponseDTO);
+    }
 }
