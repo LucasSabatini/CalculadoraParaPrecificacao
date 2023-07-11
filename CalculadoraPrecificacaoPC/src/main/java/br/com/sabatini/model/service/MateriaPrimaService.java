@@ -7,7 +7,6 @@ import br.com.sabatini.model.entity.MateriaPrima;
 import br.com.sabatini.model.repository.MateriaPrimaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -17,12 +16,23 @@ public class MateriaPrimaService {
     @Autowired
     private MateriaPrimaRepository materiaPrimaRepository;
 
-    public MateriaPrimaResponseDTO adicionarMateriaPrima(MateriaPrimaRequestDTO materiaPrimaRequestDTO){
+    public MateriaPrimaResponseDTO adicionarMateriaPrima(MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
         MateriaPrima materiaPrima = new MateriaPrima(materiaPrimaRequestDTO);
         Validar.validarMateriaPrima(materiaPrima);
+        MateriaPrimaResponseDTO materiaPrimaResponseDTO = new MateriaPrimaResponseDTO(materiaPrima);
+
+        for(MateriaPrimaResponseDTO consulta : this.consultarTodos()) {
+            if(materiaPrimaResponseDTO.nomeMP().equals(consulta.nomeMP())) {
+                materiaPrima.setNomeMP(materiaPrimaResponseDTO.nomeMP());
+                materiaPrima.setPrecoPagoMP(materiaPrimaResponseDTO.pesoUsadoFormulacaoMP());
+                materiaPrima.setPesoCompradoMP(materiaPrimaResponseDTO.pesoCompradoMP());
+
+                CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima);
+            }
+        }
+
         CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima);
         materiaPrimaRepository.save(materiaPrima);
-
         return new MateriaPrimaResponseDTO(materiaPrima);
     }
 
@@ -30,7 +40,18 @@ public class MateriaPrimaService {
         return materiaPrimaRepository.findAll().stream().map(MateriaPrimaResponseDTO::new).toList();
     }
 
-    public MateriaPrimaResponseDTO consultarPorId(@PathVariable Long id) {
+    public MateriaPrimaResponseDTO consultarPorId(Long id) {
         return materiaPrimaRepository.findById(id).map(MateriaPrimaResponseDTO::new).orElseThrow(() -> new IdNaoEncontradoException(id));
+    }
+
+    public MateriaPrimaResponseDTO atualizarMateriaPrima(Long id, MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
+        MateriaPrima materiaPrima = materiaPrimaRepository.findById(id).orElseThrow(() -> new IdNaoEncontradoException(id));
+        materiaPrima.setNomeMP(materiaPrimaRequestDTO.nomeMP());
+        materiaPrima.setPrecoPagoMP(materiaPrimaRequestDTO.precoPagoMP());
+        materiaPrima.setPesoUsadoFormulacaoMP(materiaPrimaRequestDTO.pesoUsadoFormulacaoMP());
+        materiaPrima.setPesoCompradoMP(materiaPrimaRequestDTO.pesoCompradoMP());
+        materiaPrima.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima));
+        materiaPrimaRepository.save(materiaPrima);
+        return new MateriaPrimaResponseDTO(materiaPrima);
     }
 }
