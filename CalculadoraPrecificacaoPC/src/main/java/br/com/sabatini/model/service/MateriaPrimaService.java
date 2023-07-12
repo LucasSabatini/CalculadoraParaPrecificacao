@@ -22,12 +22,8 @@ public class MateriaPrimaService {
         MateriaPrimaResponseDTO materiaPrimaResponseDTO = new MateriaPrimaResponseDTO(materiaPrima);
 
         for(MateriaPrimaResponseDTO consulta : this.consultarTodos()) {
-            if(materiaPrimaResponseDTO.nomeMP().equals(consulta.nomeMP())) {
-                materiaPrima.setNomeMP(materiaPrimaResponseDTO.nomeMP());
-                materiaPrima.setPrecoPagoMP(materiaPrimaResponseDTO.pesoUsadoFormulacaoMP());
-                materiaPrima.setPesoCompradoMP(materiaPrimaResponseDTO.pesoCompradoMP());
-
-                CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima);
+            if(consulta.nomeMP().equals(materiaPrimaResponseDTO.nomeMP())) {
+                return this.atualizarMateriaPrima(consulta.id(), materiaPrimaRequestDTO);
             }
         }
 
