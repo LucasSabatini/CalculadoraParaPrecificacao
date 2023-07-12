@@ -19,6 +19,7 @@ public class MateriaPrimaController {
     private MateriaPrimaService materiaPrimaService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody ResponseEntity<MateriaPrimaResponseDTO> adicionarMateriaPrima(@RequestBody MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
         MateriaPrimaResponseDTO materiaPrima = materiaPrimaService.adicionarMateriaPrima(materiaPrimaRequestDTO);
         return ResponseEntity.ok().body(materiaPrima);
@@ -40,5 +41,11 @@ public class MateriaPrimaController {
     public ResponseEntity<MateriaPrimaResponseDTO> atualizarMateriaPrima(@PathVariable Long id, @RequestBody MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
         MateriaPrimaResponseDTO materiaPrimaResponseDTO = materiaPrimaService.atualizarMateriaPrima(id, materiaPrimaRequestDTO);
         return ResponseEntity.ok().body(materiaPrimaResponseDTO);
+    }
+
+    @DeleteMapping(path="/{id}")
+    public ResponseEntity<Void> deletarMateriaPrima(@PathVariable Long id) {
+        materiaPrimaService.deletarMateriaPrima(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

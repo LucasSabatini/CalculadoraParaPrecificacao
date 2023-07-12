@@ -46,8 +46,13 @@ public class MateriaPrimaService {
         materiaPrima.setPrecoPagoMP(materiaPrimaRequestDTO.precoPagoMP());
         materiaPrima.setPesoUsadoFormulacaoMP(materiaPrimaRequestDTO.pesoUsadoFormulacaoMP());
         materiaPrima.setPesoCompradoMP(materiaPrimaRequestDTO.pesoCompradoMP());
-        materiaPrima.setGastoFinalMP(CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima));
+        CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima);
         materiaPrimaRepository.save(materiaPrima);
         return new MateriaPrimaResponseDTO(materiaPrima);
+    }
+
+    public void deletarMateriaPrima(Long id) {
+        MateriaPrima materiaPrima = new MateriaPrima(consultarPorId(id));
+        materiaPrimaRepository.delete(materiaPrima);
     }
 }
