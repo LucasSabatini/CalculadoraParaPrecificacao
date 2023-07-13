@@ -20,13 +20,11 @@ public class MateriaPrimaService {
         MateriaPrima materiaPrima = new MateriaPrima(materiaPrimaRequestDTO);
         Validar.validarMateriaPrima(materiaPrima);
         MateriaPrimaResponseDTO materiaPrimaResponseDTO = new MateriaPrimaResponseDTO(materiaPrima);
-
         for(MateriaPrimaResponseDTO consulta : this.consultarTodos()) {
             if(consulta.nomeMP().equals(materiaPrimaResponseDTO.nomeMP())) {
                 return this.atualizarMateriaPrima(consulta.id(), materiaPrimaRequestDTO);
             }
         }
-
         CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima);
         materiaPrimaRepository.save(materiaPrima);
         return new MateriaPrimaResponseDTO(materiaPrima);
@@ -52,7 +50,7 @@ public class MateriaPrimaService {
     }
 
     public void deletarMateriaPrima(Long id) {
-        MateriaPrima materiaPrima = new MateriaPrima(consultarPorId(id));
-        materiaPrimaRepository.delete(materiaPrima);
+        materiaPrimaRepository.findById(id).orElseThrow(() -> new IdNaoEncontradoException(id));
+        materiaPrimaRepository.deleteById(id);
     }
 }
