@@ -1,7 +1,7 @@
 package br.com.sabatini.controller;
 
-import br.com.sabatini.exception.CampoVazioException;
-import br.com.sabatini.exception.IdNaoEncontradoException;
+import br.com.sabatini.exception.EmptyFieldException;
+import br.com.sabatini.exception.IdNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ApplicationControllerAdvice {
 
-    @ExceptionHandler(IdNaoEncontradoException.class)
+    @ExceptionHandler(IdNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleIdNaoEncontradoException(IdNaoEncontradoException ex) {
+    public String handleIdNotFoundException(IdNotFoundException ex) {
         return ex.getMessage();
     }
 
-    @ExceptionHandler(CampoVazioException.class)
+    @ExceptionHandler(EmptyFieldException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleCampoVazioException(CampoVazioException ex) {
+    public String handleEmptyFieldException(EmptyFieldException ex) {
         return ex.getMessage();
     }
 

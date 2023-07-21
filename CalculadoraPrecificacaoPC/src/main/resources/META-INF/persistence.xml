@@ -3,13 +3,13 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
-    <persistence-unit name="calculadora_precificacao">
+    <persistence-unit name="pricing_calculator">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>br.com.sabatini.model.entity.MateriaPrima</class>
+        <class>br.com.sabatini.model.entity.RawMaterial</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/calculadora_precificacao"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/pricing_calculator"/>
             <property name="javax.persistence.jdbc.user" value="usertest"/>
             <property name="javax.persistence.jdbc.password" value="passtest"/>
 
