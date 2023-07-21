@@ -1,12 +1,11 @@
 package br.com.sabatini.model.entity;
 
 import br.com.sabatini.model.dto.MateriaPrimaResponseDTO;
-import br.com.sabatini.model.service.CalculadoraGastoFinal;
 import br.com.sabatini.model.dto.MateriaPrimaRequestDTO;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Objects;
 
@@ -99,12 +98,12 @@ public class MateriaPrima {
     }
 
     public BigDecimal getGastoFinalMP(){
-        CalculadoraGastoFinal.calcularMateriaPrima(this);
         return gastoFinalMP;
     }
 
-    public void setGastoFinalMP(BigDecimal gastoFinalMP){
-        this.gastoFinalMP = gastoFinalMP;
+    public void setGastoFinalMP() {
+        this.gastoFinalMP = this.getPrecoPagoMP().multiply(this.getPesoUsadoFormulacaoMP())
+                .divide(this.getPesoCompradoMP(), 2, RoundingMode.UP);
     }
 
     @Override
