@@ -1,15 +1,17 @@
 package br.com.sabatini.model.entity;
 
+import java.math.BigDecimal;
+
 public class Product {
     private String name; //Nome do seu produto final
-    private double valuePerHour; //Valor por hora trabalhada;
-    private double workedHours; //Horas trabalhadas;
-    private double quantityOfProductsMade; //Quantidade de produtos feitos;
+    private BigDecimal valuePerHour; //Valor por hora trabalhada;
+    private BigDecimal workedHours; //Horas trabalhadas;
+    private BigDecimal quantityOfProductsMade; //Quantidade de produtos feitos;
 
     public Product() {
     }
 
-    public Product(String name, double valuePerHour, double workedHours, double quantityOfProductsMade) {
+    public Product(String name, BigDecimal valuePerHour, BigDecimal workedHours, BigDecimal quantityOfProductsMade) {
         this.name = name;
         this.valuePerHour = valuePerHour;
         this.workedHours = workedHours;
@@ -24,27 +26,27 @@ public class Product {
         this.name = name;
     }
 
-    public double getValuePerHour() {
+    public BigDecimal getValuePerHour() {
         return valuePerHour;
     }
 
-    public void setValuePerHour(double valuePerHour) {
+    public void setValuePerHour(BigDecimal valuePerHour) {
         this.valuePerHour = valuePerHour;
     }
 
-    public double getWorkedHours() {
+    public BigDecimal getWorkedHours() {
         return workedHours;
     }
 
-    public void setWorkedHours(double workedHours) {
+    public void setWorkedHours(BigDecimal workedHours) {
         this.workedHours = workedHours;
     }
 
-    public double getQuantityOfProductsMade() {
+    public BigDecimal getQuantityOfProductsMade() {
         return quantityOfProductsMade;
     }
 
-    public void setQuantityOfProductsMade(double quantityOfProductsMade) {
+    public void setQuantityOfProductsMade(BigDecimal quantityOfProductsMade) {
         this.quantityOfProductsMade = quantityOfProductsMade;
     }
 }
