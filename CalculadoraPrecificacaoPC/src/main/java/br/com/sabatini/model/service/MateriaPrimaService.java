@@ -25,7 +25,7 @@ public class MateriaPrimaService {
                 return this.atualizarMateriaPrima(consulta.id(), materiaPrimaRequestDTO);
             }
         }
-        CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima);
+        materiaPrima.setGastoFinalMP();
         materiaPrimaRepository.save(materiaPrima);
         return new MateriaPrimaResponseDTO(materiaPrima);
     }
@@ -35,16 +35,18 @@ public class MateriaPrimaService {
     }
 
     public MateriaPrimaResponseDTO consultarPorId(Long id) {
-        return materiaPrimaRepository.findById(id).map(MateriaPrimaResponseDTO::new).orElseThrow(() -> new IdNaoEncontradoException(id));
+        return materiaPrimaRepository.findById(id)
+                .map(MateriaPrimaResponseDTO::new).orElseThrow(() -> new IdNaoEncontradoException(id));
     }
 
     public MateriaPrimaResponseDTO atualizarMateriaPrima(Long id, MateriaPrimaRequestDTO materiaPrimaRequestDTO) {
-        MateriaPrima materiaPrima = materiaPrimaRepository.findById(id).orElseThrow(() -> new IdNaoEncontradoException(id));
+        MateriaPrima materiaPrima = materiaPrimaRepository.findById(id)
+                .orElseThrow(() -> new IdNaoEncontradoException(id));
         materiaPrima.setNomeMP(materiaPrimaRequestDTO.nomeMP());
         materiaPrima.setPrecoPagoMP(materiaPrimaRequestDTO.precoPagoMP());
         materiaPrima.setPesoUsadoFormulacaoMP(materiaPrimaRequestDTO.pesoUsadoFormulacaoMP());
         materiaPrima.setPesoCompradoMP(materiaPrimaRequestDTO.pesoCompradoMP());
-        CalculadoraGastoFinal.calcularMateriaPrima(materiaPrima);
+        materiaPrima.setGastoFinalMP();
         materiaPrimaRepository.save(materiaPrima);
         return new MateriaPrimaResponseDTO(materiaPrima);
     }
