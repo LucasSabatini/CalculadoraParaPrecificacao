@@ -35,13 +35,11 @@ public class RawMaterial {
     @Column(name = "final_cost")
     private BigDecimal finalCost; //Gasto final da matéria-prima na formulação
 
-    public RawMaterial() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false, updatable = false)
+    private User user;
 
-    public RawMaterial(BigDecimal pricePaid, BigDecimal weightUsedInRecipe, BigDecimal weightPurchased) {
-        this.pricePaid = pricePaid;
-        this.weightUsedInRecipe = weightUsedInRecipe;
-        this.weightPurchased = weightPurchased;
+    public RawMaterial() {
     }
 
     public RawMaterial(RawMaterialRequestDTO rawMaterialRequestDTO) {
@@ -51,18 +49,19 @@ public class RawMaterial {
         this.weightPurchased = rawMaterialRequestDTO.weightPurchased();
     }
 
-    public RawMaterial(String nameRawMaterial, BigDecimal pricePaid, BigDecimal weightUsedInRecipe, BigDecimal weightPurchased) {
-        this.nameRawMaterial = nameRawMaterial;
-        this.pricePaid = pricePaid;
-        this.weightUsedInRecipe = weightUsedInRecipe;
-        this.weightPurchased = weightPurchased;
-    }
-
     public RawMaterial(RawMaterialResponseDTO rawMaterialResponseDTO) {
         this.nameRawMaterial = rawMaterialResponseDTO.nameRawMaterial();
         this.pricePaid = rawMaterialResponseDTO.pricePaid();
         this.weightUsedInRecipe = rawMaterialResponseDTO.weightUsedInRecipe();
         this.weightPurchased = rawMaterialResponseDTO.weightPurchased();
+    }
+
+    public RawMaterial(String nameRawMaterial, BigDecimal pricePaid, BigDecimal weightUsedInRecipe, BigDecimal weightPurchased, User user) {
+        this.nameRawMaterial = nameRawMaterial;
+        this.pricePaid = pricePaid;
+        this.weightUsedInRecipe = weightUsedInRecipe;
+        this.weightPurchased = weightPurchased;
+        this.user = user;
     }
 
     public Long getId() {
@@ -108,6 +107,14 @@ public class RawMaterial {
     public void setFinalCost() {
         this.finalCost = this.getPricePaid().multiply(this.getWeightUsedInRecipe())
                 .divide(this.getWeightPurchased(), 2, RoundingMode.UP);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
