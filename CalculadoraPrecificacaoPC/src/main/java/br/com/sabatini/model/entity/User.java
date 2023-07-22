@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -31,7 +33,8 @@ public class User {
     @Size(min = 4, max = 40)
     private String userPassword;
 
-    //private List<RawMaterial> rawMaterialList = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<RawMaterial> rawMaterialList = new ArrayList<>();
 
     public User() {
     }
@@ -70,6 +73,14 @@ public class User {
         this.userPassword = userPassword;
     }
 
+    public List<RawMaterial> getRawMaterialList() {
+        return rawMaterialList;
+    }
+
+    public void setRawMaterialList(List<RawMaterial> rawMaterialList) {
+        this.rawMaterialList = rawMaterialList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,12 +89,12 @@ public class User {
         return id.equals(user.id)
                 && userName.equals(user.userName)
                 && userEmail.equals(user.userEmail)
-                && userPassword.equals(user.userPassword);
-                //&& Objects.equals(rawMaterialList, user.rawMaterialList);
+                && userPassword.equals(user.userPassword)
+                && Objects.equals(rawMaterialList, user.rawMaterialList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userName, userEmail, userPassword); //rawMaterialList);
+        return Objects.hash(id, userName, userEmail, userPassword, rawMaterialList);
     }
 }

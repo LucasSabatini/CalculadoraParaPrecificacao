@@ -140,11 +140,12 @@ public class RawMaterial {
                 && Objects.equals(pricePaid, that.pricePaid)
                 && Objects.equals(weightUsedInRecipe, that.weightUsedInRecipe)
                 && Objects.equals(weightPurchased, that.weightPurchased)
-                && Objects.equals(finalCost, that.finalCost);
+                && Objects.equals(finalCost, that.finalCost)
+                && Objects.equals(user, that.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nameRawMaterial, pricePaid, weightUsedInRecipe, weightPurchased, finalCost);
+        return Objects.hash(id, nameRawMaterial, pricePaid, weightUsedInRecipe, weightPurchased, finalCost, user);
     }
 }
