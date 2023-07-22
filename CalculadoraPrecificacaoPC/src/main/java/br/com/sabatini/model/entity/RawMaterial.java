@@ -3,6 +3,8 @@ package br.com.sabatini.model.entity;
 import br.com.sabatini.model.dto.RawMaterialResponseDTO;
 import br.com.sabatini.model.dto.RawMaterialRequestDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -16,7 +18,9 @@ public class RawMaterial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 40)
+    @NotBlank
+    @Size(min = 2, max = 40)
     private String nameRawMaterial; //Nome da matéria-prima
 
     @Column(name = "price_paid")
