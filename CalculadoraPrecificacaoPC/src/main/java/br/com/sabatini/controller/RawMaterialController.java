@@ -42,9 +42,9 @@ public class RawMaterialController {
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<RawMaterialResponseDTO> updateRawMaterial(@PathVariable Long id, @RequestBody RawMaterialRequestDTO rawMaterialRequestDTO) {
-        RawMaterialResponseDTO rawMaterialResponseDTO = rawMaterialService.updateRawMaterial(id, rawMaterialRequestDTO);
-        return ResponseEntity.ok().body(rawMaterialResponseDTO);
+    public ResponseEntity<Void> updateRawMaterial(@PathVariable Long id, @RequestBody RawMaterialRequestDTO rawMaterialRequestDTO) {
+        rawMaterialService.updateRawMaterial(id, rawMaterialRequestDTO);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping(path = "/{id}")
