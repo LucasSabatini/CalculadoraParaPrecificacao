@@ -4,9 +4,10 @@ import br.com.sabatini.exception.IdNotFoundException;
 import br.com.sabatini.model.dto.RawMaterialRequestDTO;
 import br.com.sabatini.model.dto.RawMaterialResponseDTO;
 import br.com.sabatini.model.entity.RawMaterial;
-import br.com.sabatini.model.repository.MateriaPrimaRepository;
+import br.com.sabatini.model.repository.RawMaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,8 +15,9 @@ import java.util.List;
 public class RawMaterialService {
 
     @Autowired
-    private MateriaPrimaRepository materiaPrimaRepository;
+    private RawMaterialRepository rawMaterialRepository;
 
+    @Transactional
     public RawMaterialResponseDTO addRawMaterial(RawMaterialRequestDTO rawMaterialRequestDTO) {
         RawMaterial rawMaterial = new RawMaterial(rawMaterialRequestDTO);
         Validator.validateRawMaterial(rawMaterial);
@@ -26,33 +28,34 @@ public class RawMaterialService {
             }
         }
         rawMaterial.setFinalCost();
-        materiaPrimaRepository.save(rawMaterial);
+        rawMaterialRepository.save(rawMaterial);
         return new RawMaterialResponseDTO(rawMaterial);
     }
 
     public List<RawMaterialResponseDTO> getAll() {
-        return materiaPrimaRepository.findAll().stream().map(RawMaterialResponseDTO::new).toList();
+        return rawMaterialRepository.findAll().stream().map(RawMaterialResponseDTO::new).toList();
     }
 
     public RawMaterialResponseDTO getById(Long id) {
-        return materiaPrimaRepository.findById(id)
+        return rawMaterialRepository.findById(id)
                 .map(RawMaterialResponseDTO::new).orElseThrow(() -> new IdNotFoundException(id));
     }
 
+    @Transactional
     public RawMaterialResponseDTO updateRawMaterial(Long id, RawMaterialRequestDTO rawMaterialRequestDTO) {
-        RawMaterial rawMaterial = materiaPrimaRepository.findById(id)
+        RawMaterial rawMaterial = rawMaterialRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException(id));
         rawMaterial.setNameRawMaterial(rawMaterialRequestDTO.nameRawMaterial());
         rawMaterial.setPricePaid(rawMaterialRequestDTO.pricePaid());
         rawMaterial.setWeightUsedInRecipe(rawMaterialRequestDTO.weightUsedInRecipe());
         rawMaterial.setWeightPurchased(rawMaterialRequestDTO.weightPurchased());
         rawMaterial.setFinalCost();
-        materiaPrimaRepository.save(rawMaterial);
+        rawMaterialRepository.save(rawMaterial);
         return new RawMaterialResponseDTO(rawMaterial);
     }
 
     public void deleteRawMaterial(Long id) {
-        materiaPrimaRepository.findById(id).orElseThrow(() -> new IdNotFoundException(id));
-        materiaPrimaRepository.deleteById(id);
+        rawMaterialRepository.findById(id).orElseThrow(() -> new IdNotFoundException(id));
+        rawMaterialRepository.deleteById(id);
     }
 }

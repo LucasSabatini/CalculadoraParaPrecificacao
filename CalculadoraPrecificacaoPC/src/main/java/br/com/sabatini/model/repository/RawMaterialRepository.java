@@ -2,6 +2,8 @@ package br.com.sabatini.model.repository;
 
 import br.com.sabatini.model.entity.RawMaterial;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MateriaPrimaRepository extends JpaRepository<RawMaterial, Long> {
+@Repository
+public interface RawMaterialRepository extends JpaRepository<RawMaterial, Long> {
 }
