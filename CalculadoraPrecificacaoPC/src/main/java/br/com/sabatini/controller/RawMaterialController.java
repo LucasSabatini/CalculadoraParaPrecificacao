@@ -6,23 +6,27 @@ import br.com.sabatini.model.service.RawMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/materiaprima")
+@Validated
 public class RawMaterialController {
 
     @Autowired
     private RawMaterialService rawMaterialService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public @ResponseBody ResponseEntity<RawMaterialResponseDTO> addRawMaterial(@RequestBody RawMaterialRequestDTO rawMaterialRequestDTO) {
+    public @ResponseBody ResponseEntity<Void> addRawMaterial(@RequestBody RawMaterialRequestDTO rawMaterialRequestDTO) {
         RawMaterialResponseDTO rawMaterialResponseDTO = rawMaterialService.addRawMaterial(rawMaterialRequestDTO);
-        return ResponseEntity.ok().body(rawMaterialResponseDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(rawMaterialResponseDTO.id()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
     @GetMapping
