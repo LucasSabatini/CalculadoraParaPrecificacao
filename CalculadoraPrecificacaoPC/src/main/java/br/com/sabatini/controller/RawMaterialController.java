@@ -50,6 +50,6 @@ public class RawMaterialController {
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteRawMaterial(@PathVariable Long id) {
         rawMaterialService.deleteRawMaterial(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 }
