@@ -22,7 +22,7 @@ public class RawMaterialService {
         RawMaterial rawMaterial = new RawMaterial(rawMaterialRequestDTO);
         Validator.validateRawMaterial(rawMaterial);
         RawMaterialResponseDTO rawMaterialResponseDTO = new RawMaterialResponseDTO(rawMaterial);
-        for(RawMaterialResponseDTO consulta : this.getAll()) {
+        for(RawMaterialResponseDTO consulta : this.getAllRawMaterials()) {
             if(consulta.nameRawMaterial().equals(rawMaterialResponseDTO.nameRawMaterial())) {
                 return this.updateRawMaterial(consulta.id(), rawMaterialRequestDTO);
             }
@@ -32,11 +32,11 @@ public class RawMaterialService {
         return new RawMaterialResponseDTO(rawMaterial);
     }
 
-    public List<RawMaterialResponseDTO> getAll() {
+    public List<RawMaterialResponseDTO> getAllRawMaterials() {
         return rawMaterialRepository.findAll().stream().map(RawMaterialResponseDTO::new).toList();
     }
 
-    public RawMaterialResponseDTO getById(Long id) {
+    public RawMaterialResponseDTO getRawMaterialById(Long id) {
         return rawMaterialRepository.findById(id)
                 .map(RawMaterialResponseDTO::new).orElseThrow(() -> new IdNotFoundException(id));
     }
