@@ -4,7 +4,6 @@ import br.com.sabatini.model.dto.RawMaterialRequestDTO;
 import br.com.sabatini.model.dto.RawMaterialResponseDTO;
 import br.com.sabatini.model.service.RawMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -30,14 +29,14 @@ public class RawMaterialController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RawMaterialResponseDTO>> getAll() {
-        List<RawMaterialResponseDTO> rawMaterialResponseDTO = rawMaterialService.getAll();
-        return ResponseEntity.ok().body(rawMaterialResponseDTO);
+    public ResponseEntity<List<RawMaterialResponseDTO>> getAllRawMaterials() {
+        List<RawMaterialResponseDTO> rawMaterialResponseDTOList = rawMaterialService.getAllRawMaterials();
+        return ResponseEntity.ok().body(rawMaterialResponseDTOList);
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<RawMaterialResponseDTO> getById(@PathVariable Long id) {
-        RawMaterialResponseDTO rawMaterialResponseDTO = rawMaterialService.getById(id);
+    public ResponseEntity<RawMaterialResponseDTO> getRawMaterialById(@PathVariable Long id) {
+        RawMaterialResponseDTO rawMaterialResponseDTO = rawMaterialService.getRawMaterialById(id);
         return ResponseEntity.ok().body(rawMaterialResponseDTO);
     }
 
@@ -50,6 +49,6 @@ public class RawMaterialController {
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteRawMaterial(@PathVariable Long id) {
         rawMaterialService.deleteRawMaterial(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }
