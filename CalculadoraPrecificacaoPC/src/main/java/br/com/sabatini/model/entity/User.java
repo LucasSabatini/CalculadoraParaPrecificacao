@@ -14,6 +14,7 @@ import java.util.Objects;
 @Table(name = "user")
 public class User {
     private interface CreateUser {}
+    private interface UpdateUser {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,16 +28,16 @@ public class User {
     private String userName;
 
     @Column(name = "user_email", nullable = false, length = 40, unique = true)
-    @NotEmpty(groups = {CreateUser.class})
-    @NotNull(groups = {CreateUser.class})
-    @Size(groups = {CreateUser.class}, min = 4, max = 40)
+    @NotEmpty(groups = {CreateUser.class, UpdateUser.class})
+    @NotNull(groups = {CreateUser.class, UpdateUser.class})
+    @Size(groups = {CreateUser.class, UpdateUser.class}, min = 4, max = 40)
     private String userEmail;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "user_password", nullable = false, length = 40)
-    @NotEmpty(groups = {CreateUser.class})
-    @NotNull(groups = {CreateUser.class})
-    @Size(groups = {CreateUser.class}, min = 4, max = 40)
+    @NotEmpty(groups = {CreateUser.class, UpdateUser.class})
+    @NotNull(groups = {CreateUser.class, UpdateUser.class})
+    @Size(groups = {CreateUser.class, UpdateUser.class}, min = 4, max = 40)
     private String userPassword;
 
     @OneToMany(mappedBy = "user")
