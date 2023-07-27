@@ -14,9 +14,15 @@ import java.util.Objects;
 @Table(name = "raw_material")
 @Entity
 public class RawMaterial {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false, updatable = false)
+    private User user;
 
     @Column(name = "name", nullable = false, length = 40)
     @NotBlank
@@ -35,10 +41,6 @@ public class RawMaterial {
     @Column(name = "final_cost")
     private BigDecimal finalCost; //Gasto final da matéria-prima na formulação
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false, updatable = false)
-    private User user;
-
     public RawMaterial() {
     }
 
@@ -47,21 +49,6 @@ public class RawMaterial {
         this.pricePaid = rawMaterialRequestDTO.pricePaid();
         this.weightUsedInRecipe = rawMaterialRequestDTO.weightUsedInRecipe();
         this.weightPurchased = rawMaterialRequestDTO.weightPurchased();
-    }
-
-    public RawMaterial(RawMaterialResponseDTO rawMaterialResponseDTO) {
-        this.nameRawMaterial = rawMaterialResponseDTO.nameRawMaterial();
-        this.pricePaid = rawMaterialResponseDTO.pricePaid();
-        this.weightUsedInRecipe = rawMaterialResponseDTO.weightUsedInRecipe();
-        this.weightPurchased = rawMaterialResponseDTO.weightPurchased();
-    }
-
-    public RawMaterial(String nameRawMaterial, BigDecimal pricePaid, BigDecimal weightUsedInRecipe, BigDecimal weightPurchased, User user) {
-        this.nameRawMaterial = nameRawMaterial;
-        this.pricePaid = pricePaid;
-        this.weightUsedInRecipe = weightUsedInRecipe;
-        this.weightPurchased = weightPurchased;
-        this.user = user;
     }
 
     public Long getId() {
