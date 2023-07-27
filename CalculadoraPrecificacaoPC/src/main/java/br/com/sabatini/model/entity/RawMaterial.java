@@ -49,6 +49,7 @@ public class RawMaterial {
         this.pricePaid = rawMaterialRequestDTO.pricePaid();
         this.weightUsedInRecipe = rawMaterialRequestDTO.weightUsedInRecipe();
         this.weightPurchased = rawMaterialRequestDTO.weightPurchased();
+        this.user = rawMaterialRequestDTO.user();
     }
 
     public Long getId() {
