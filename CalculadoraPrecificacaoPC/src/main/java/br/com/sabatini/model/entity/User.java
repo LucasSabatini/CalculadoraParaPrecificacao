@@ -2,7 +2,8 @@ package br.com.sabatini.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
@@ -12,25 +13,30 @@ import java.util.Objects;
 @Entity
 @Table(name = "user")
 public class User {
+    private interface CreateUser {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true)
     private Long id;
 
     @Column(name = "user_name", nullable = false, length = 40, unique = true)
-    @NotBlank
-    @Size(min = 4, max = 40)
+    @NotNull(groups = CreateUser.class)
+    @NotEmpty(groups = CreateUser.class)
+    @Size(groups = CreateUser.class, min = 4, max = 40)
     private String userName;
 
     @Column(name = "user_email", nullable = false, length = 40, unique = true)
-    @NotBlank
-    @Size(min = 4, max = 40)
+    @NotEmpty(groups = {CreateUser.class})
+    @NotNull(groups = {CreateUser.class})
+    @Size(groups = {CreateUser.class}, min = 4, max = 40)
     private String userEmail;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "user_password", nullable = false, length = 40)
-    @NotBlank
-    @Size(min = 4, max = 40)
+    @NotEmpty(groups = {CreateUser.class})
+    @NotNull(groups = {CreateUser.class})
+    @Size(groups = {CreateUser.class}, min = 4, max = 40)
     private String userPassword;
 
     @OneToMany(mappedBy = "user")
@@ -39,7 +45,8 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String userEmail, String userPassword) {
+    public User(Long id, String userName, String userEmail, String userPassword) {
+        this.id = id;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
