@@ -6,7 +6,6 @@ import br.com.sabatini.model.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -32,8 +31,8 @@ public class UserService {
     @Transactional
     public User updateUserEmail(Long id, User user) {
         User userToUpdate = userRepository.findById(id).orElseThrow(() -> new IdNotFoundException(id));
-        userToUpdate.setUserEmail(user.getUserEmail());
-        userToUpdate.setUserPassword(user.getUserPassword());
+        userToUpdate.setEmail(user.getEmail());
+        userToUpdate.setPassword(user.getPassword());
         userRepository.save(userToUpdate);
         return userToUpdate;
     }
