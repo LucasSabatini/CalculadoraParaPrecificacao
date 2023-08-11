@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +17,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Data
+@Builder
 @Table(name = "user")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter(value = AccessLevel.PUBLIC)
 public class User implements UserDetails {
 
     private interface CreateUser {}
@@ -27,11 +33,17 @@ public class User implements UserDetails {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @Column(name = "username", nullable = false, length = 40, unique = true)
-    @NotNull(groups = CreateUser.class)
-    @NotEmpty(groups = CreateUser.class)
-    @Size(groups = CreateUser.class, min = 4, max = 40)
-    private String username;
+    @Column(name = "first_name", nullable = false, length = 40, unique = true)
+    @NotEmpty(groups = {CreateUser.class, UpdateUser.class})
+    @NotNull(groups = {CreateUser.class, UpdateUser.class})
+    @Size(groups = {CreateUser.class, UpdateUser.class}, min = 4, max = 40)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 40, unique = true)
+    @NotEmpty(groups = {CreateUser.class, UpdateUser.class})
+    @NotNull(groups = {CreateUser.class, UpdateUser.class})
+    @Size(groups = {CreateUser.class, UpdateUser.class}, min = 4, max = 40)
+    private String lastName;
 
     @Column(name = "email", nullable = false, length = 40, unique = true)
     @NotEmpty(groups = {CreateUser.class, UpdateUser.class})
@@ -52,50 +64,18 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public User() {
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    public User(Long id, String username, String email, String password) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
+    @Override
     public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String userName) {
-        this.username = userName;
-    }
-
-    public String getEmail() {
         return email;
     }
 
     public void setEmail(String userEmail) {
         this.email = userEmail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String userPassword) {
-        this.password = userPassword;
-    }
-
-    public List<RawMaterial> getRawMaterialList() {
-        return rawMaterialList;
-    }
-
-    public void setRawMaterialList(List<RawMaterial> rawMaterialList) {
-        this.rawMaterialList = rawMaterialList;
     }
 
     @Override
@@ -129,7 +109,6 @@ public class User implements UserDetails {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id.equals(user.id)
-                && username.equals(user.username)
                 && email.equals(user.email)
                 && password.equals(user.password)
                 && Objects.equals(rawMaterialList, user.rawMaterialList);
@@ -137,6 +116,6 @@ public class User implements UserDetails {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, email, password, rawMaterialList);
+        return Objects.hash(id, email, password, rawMaterialList);
     }
 }
