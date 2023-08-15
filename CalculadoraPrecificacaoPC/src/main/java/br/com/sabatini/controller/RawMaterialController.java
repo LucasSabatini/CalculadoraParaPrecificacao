@@ -2,9 +2,15 @@ package br.com.sabatini.controller;
 
 import br.com.sabatini.model.dto.RawMaterialRequestDTO;
 import br.com.sabatini.model.dto.RawMaterialResponseDTO;
+import br.com.sabatini.model.entity.User;
 import br.com.sabatini.model.service.RawMaterialService;
+import br.com.sabatini.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -14,7 +20,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/materiaprima")
+@RequestMapping("/api/materiaprima")
 @Validated
 public class RawMaterialController {
 

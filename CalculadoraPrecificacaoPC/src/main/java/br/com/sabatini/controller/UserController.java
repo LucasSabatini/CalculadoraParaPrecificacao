@@ -1,8 +1,9 @@
 package br.com.sabatini.controller;
 
 import br.com.sabatini.model.entity.User;
+import br.com.sabatini.model.service.AuthenticationService;
 import br.com.sabatini.model.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.sabatini.security.RegisterRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -11,18 +12,22 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @Validated
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+    private final AuthenticationService authService;
+
+    public UserController(UserService userService, AuthenticationService authService) {
+        this.userService = userService;
+        this.authService = authService;
+    }
 
     @PostMapping
-    public @ResponseBody ResponseEntity<Void> addUser(@RequestBody User user) {
-        userService.addUser(user);
+    public @ResponseBody ResponseEntity<Void> addUser(@RequestBody RegisterRequest user) {
+        authService.registerUser(user);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
