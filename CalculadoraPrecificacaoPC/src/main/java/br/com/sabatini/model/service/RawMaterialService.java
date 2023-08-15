@@ -4,8 +4,12 @@ import br.com.sabatini.exception.IdNotFoundException;
 import br.com.sabatini.model.dto.RawMaterialRequestDTO;
 import br.com.sabatini.model.dto.RawMaterialResponseDTO;
 import br.com.sabatini.model.entity.RawMaterial;
+import br.com.sabatini.model.entity.User;
 import br.com.sabatini.model.repository.RawMaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,9 +21,15 @@ public class RawMaterialService {
     @Autowired
     private RawMaterialRepository rawMaterialRepository;
 
+    @Autowired
+    private UserService userService;
+
     @Transactional
     public RawMaterialResponseDTO addRawMaterial(RawMaterialRequestDTO rawMaterialRequestDTO) {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userService.getUserByEmail(userDetails.getUsername());
         RawMaterial rawMaterial = new RawMaterial(rawMaterialRequestDTO);
+        rawMaterial.setUser(currentUser);
         Validator.validateRawMaterial(rawMaterial);
         RawMaterialResponseDTO rawMaterialResponseDTO = new RawMaterialResponseDTO(rawMaterial);
         for(RawMaterialResponseDTO consulta : this.getAllRawMaterials()) {

@@ -1,6 +1,7 @@
 package br.com.sabatini.model.service;
 
 import br.com.sabatini.exception.IdNotFoundException;
+import br.com.sabatini.exception.UserNotFoundException;
 import br.com.sabatini.model.entity.User;
 import br.com.sabatini.model.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class UserService {
 
     public User getUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new IdNotFoundException(id));
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepository.getUserByEmail(email).orElseThrow(() -> new UserNotFoundException(email));
     }
 
     @Transactional
