@@ -5,11 +5,11 @@ import br.com.sabatini.model.entity.User;
 
 import java.math.BigDecimal;
 
-public record RawMaterialResponseDTO(Long id, String nameRawMaterial, BigDecimal pricePaid, BigDecimal weightUsedInRecipe, BigDecimal weightPurchased, BigDecimal finalCost, User user) {
+public record RawMaterialResponseDTO(Long id, String nameRawMaterial, BigDecimal pricePaid, BigDecimal weightUsedInRecipe, BigDecimal weightPurchased, BigDecimal finalCost, Long user_id) {
 
     public RawMaterialResponseDTO(RawMaterial rawMaterial) {
         this(rawMaterial.getId(), rawMaterial.getNameRawMaterial(), rawMaterial.getPricePaid(),
                 rawMaterial.getWeightUsedInRecipe(), rawMaterial.getWeightPurchased(),
-                rawMaterial.getFinalCost(), rawMaterial.getUser());
+                rawMaterial.getFinalCost(), rawMaterial.getUser().getId());
     }
 }
