@@ -1,18 +1,21 @@
 package br.com.sabatini.model.entity;
 
-import br.com.sabatini.model.dto.RawMaterialResponseDTO;
 import br.com.sabatini.model.dto.RawMaterialRequestDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.Objects;
 
 @Table(name = "raw_material")
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class RawMaterial {
 
     @Id
@@ -21,7 +24,8 @@ public class RawMaterial {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false, updatable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private User user;
 
     @Column(name = "name", nullable = false, length = 40)
@@ -41,7 +45,12 @@ public class RawMaterial {
     @Column(name = "final_cost")
     private BigDecimal finalCost; //Gasto final da matéria-prima na formulação
 
-    public RawMaterial() {
+    public RawMaterial(User user, String nameRawMaterial, BigDecimal pricePaid, BigDecimal weightUsedInRecipe, BigDecimal weightPurchased) {
+        this.setUser(user);
+        this.setNameRawMaterial(nameRawMaterial);
+        this.setPricePaid(pricePaid);
+        this.setWeightUsedInRecipe(weightUsedInRecipe);
+        this.setWeightPurchased(weightPurchased);
     }
 
     public RawMaterial(RawMaterialRequestDTO rawMaterialRequestDTO) {
@@ -49,52 +58,10 @@ public class RawMaterial {
         this.pricePaid = rawMaterialRequestDTO.pricePaid();
         this.weightUsedInRecipe = rawMaterialRequestDTO.weightUsedInRecipe();
         this.weightPurchased = rawMaterialRequestDTO.weightPurchased();
-        this.user = rawMaterialRequestDTO.user();
     }
 
     public Long getId() {
         return id;
-    }
-
-    public String getNameRawMaterial() {
-        return nameRawMaterial;
-    }
-
-    public void setNameRawMaterial(String nameRawMaterial) {
-        this.nameRawMaterial = nameRawMaterial;
-    }
-
-    public BigDecimal getPricePaid(){
-        return pricePaid;
-    }
-
-    public void setPricePaid(BigDecimal pricePaid){
-        this.pricePaid = pricePaid;
-    }
-
-    public BigDecimal getWeightUsedInRecipe(){
-        return weightUsedInRecipe;
-    }
-
-    public void setWeightUsedInRecipe(BigDecimal weightUsedInRecipe){
-        this.weightUsedInRecipe = weightUsedInRecipe;
-    }
-
-    public BigDecimal getWeightPurchased(){
-        return weightPurchased;
-    }
-
-    public void setWeightPurchased(BigDecimal weightPurchased){
-        this.weightPurchased = weightPurchased;
-    }
-
-    public BigDecimal getFinalCost(){
-        return finalCost;
-    }
-
-    public void setFinalCost() {
-        this.finalCost = this.getPricePaid().multiply(this.getWeightUsedInRecipe())
-                .divide(this.getWeightPurchased(), 2, RoundingMode.UP);
     }
 
     public User getUser() {
@@ -105,17 +72,45 @@ public class RawMaterial {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        return "\nRawMaterial{" +
-                "id=" + id +
-                ", nameRawMaterial='" + nameRawMaterial + '\'' +
-                ", pricePaid=" + decimalFormat.format(pricePaid) +
-                ", weightUsedInRecipe=" + decimalFormat.format(weightUsedInRecipe) +
-                ", weightPurchased=" + decimalFormat.format(weightPurchased) +
-                ", finalCost=" + decimalFormat.format(finalCost) +
-                '}';
+    public String getNameRawMaterial() {
+        return nameRawMaterial;
+    }
+
+    public void setNameRawMaterial(String nameRawMaterial) {
+        this.nameRawMaterial = nameRawMaterial;
+    }
+
+    public BigDecimal getPricePaid() {
+        return pricePaid;
+    }
+
+    public void setPricePaid(BigDecimal pricePaid) {
+        this.pricePaid = pricePaid;
+    }
+
+    public BigDecimal getWeightUsedInRecipe() {
+        return weightUsedInRecipe;
+    }
+
+    public void setWeightUsedInRecipe(BigDecimal weightUsedInRecipe) {
+        this.weightUsedInRecipe = weightUsedInRecipe;
+    }
+
+    public BigDecimal getWeightPurchased() {
+        return weightPurchased;
+    }
+
+    public void setWeightPurchased(BigDecimal weightPurchased) {
+        this.weightPurchased = weightPurchased;
+    }
+
+    public BigDecimal getFinalCost() {
+        return finalCost;
+    }
+
+    public void setFinalCost() {
+        this.finalCost = this.getPricePaid().multiply(this.getWeightUsedInRecipe())
+                .divide(this.getWeightPurchased(), 2, RoundingMode.UP);
     }
 
     @Override
@@ -123,17 +118,11 @@ public class RawMaterial {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RawMaterial that = (RawMaterial) o;
-        return Objects.equals(id, that.id)
-                && Objects.equals(nameRawMaterial, that.nameRawMaterial)
-                && Objects.equals(pricePaid, that.pricePaid)
-                && Objects.equals(weightUsedInRecipe, that.weightUsedInRecipe)
-                && Objects.equals(weightPurchased, that.weightPurchased)
-                && Objects.equals(finalCost, that.finalCost)
-                && Objects.equals(user, that.user);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nameRawMaterial, pricePaid, weightUsedInRecipe, weightPurchased, finalCost, user);
+        return Objects.hash(id);
     }
 }
