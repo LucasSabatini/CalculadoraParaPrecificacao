@@ -1,22 +1,27 @@
-package br.com.sabatini.model.service;
+package br.com.sabatini.service;
 
 import br.com.sabatini.model.entity.User;
-import br.com.sabatini.model.repository.UserRepository;
+import br.com.sabatini.repository.UserRepository;
 import br.com.sabatini.security.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class AuthenticationService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+
+    public AuthenticationService(UserRepository repository, PasswordEncoder encoder, JwtService jwtService, AuthenticationManager manager) {
+        this.userRepository = repository;
+        this.passwordEncoder = encoder;
+        this.jwtService = jwtService;
+        this.authenticationManager = manager;
+    }
 
     public AuthenticationResponse registerUser(RegisterRequest request) {
         var user = User.builder()
@@ -26,6 +31,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
+
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()

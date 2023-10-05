@@ -11,7 +11,7 @@
 
     <groupId>br.com.sabatini</groupId>
     <artifactId>CalculadoraPrecificacaoPC</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>CalculadoraPrecificacaoPC</name>
     <description>Calculadora para precificação de produtos</description>
 
@@ -100,7 +100,11 @@
             <version>24.0.1</version>
             <scope>compile</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
     </dependencies>
 
     <build>

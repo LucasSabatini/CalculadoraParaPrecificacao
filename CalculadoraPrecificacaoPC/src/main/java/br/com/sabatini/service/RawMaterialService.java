@@ -1,13 +1,11 @@
-package br.com.sabatini.model.service;
+package br.com.sabatini.service;
 
 import br.com.sabatini.exception.IdNotFoundException;
 import br.com.sabatini.model.dto.RawMaterialRequestDTO;
 import br.com.sabatini.model.dto.RawMaterialResponseDTO;
 import br.com.sabatini.model.entity.RawMaterial;
 import br.com.sabatini.model.entity.User;
-import br.com.sabatini.model.repository.RawMaterialRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+import br.com.sabatini.repository.RawMaterialRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -18,11 +16,13 @@ import java.util.List;
 @Service
 public class RawMaterialService {
 
-    @Autowired
-    private RawMaterialRepository rawMaterialRepository;
+    private final RawMaterialRepository rawMaterialRepository;
+    private final UserService userService;
 
-    @Autowired
-    private UserService userService;
+    public RawMaterialService(RawMaterialRepository rawMaterialRepository, UserService userService) {
+        this.rawMaterialRepository = rawMaterialRepository;
+        this.userService = userService;
+    }
 
     @Transactional
     public RawMaterialResponseDTO addRawMaterial(RawMaterialRequestDTO rawMaterialRequestDTO) {
@@ -48,13 +48,13 @@ public class RawMaterialService {
 
     public RawMaterialResponseDTO getRawMaterialById(Long id) {
         return rawMaterialRepository.findById(id)
-                .map(RawMaterialResponseDTO::new).orElseThrow(() -> new IdNotFoundException(id));
+                .map(RawMaterialResponseDTO::new).orElseThrow(() -> new IdNotFoundException("ID não encontrado!"));
     }
 
     @Transactional
     public RawMaterialResponseDTO updateRawMaterial(Long id, RawMaterialRequestDTO rawMaterialRequestDTO) {
         RawMaterial rawMaterial = rawMaterialRepository.findById(id)
-                .orElseThrow(() -> new IdNotFoundException(id));
+                .orElseThrow(() -> new IdNotFoundException("ID não encontrado!"));
         rawMaterial.setNameRawMaterial(rawMaterialRequestDTO.nameRawMaterial());
         rawMaterial.setPricePaid(rawMaterialRequestDTO.pricePaid());
         rawMaterial.setWeightUsedInRecipe(rawMaterialRequestDTO.weightUsedInRecipe());
@@ -65,7 +65,7 @@ public class RawMaterialService {
     }
 
     public void deleteRawMaterial(Long id) {
-        rawMaterialRepository.findById(id).orElseThrow(() -> new IdNotFoundException(id));
+        rawMaterialRepository.findById(id).orElseThrow(() -> new IdNotFoundException("ID não encontrado!"));
         rawMaterialRepository.deleteById(id);
     }
 }

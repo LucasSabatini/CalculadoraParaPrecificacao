@@ -1,4 +1,4 @@
-package br.com.sabatini.model.repository;
+package br.com.sabatini.repository;
 
 import br.com.sabatini.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

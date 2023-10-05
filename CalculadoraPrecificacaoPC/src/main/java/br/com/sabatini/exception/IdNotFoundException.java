@@ -1,13 +1,13 @@
 package br.com.sabatini.exception;
 
-public class IdNotFoundException extends RuntimeException {
-    private final Long id;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-    public IdNotFoundException(Long id) {
-        this.id = id;
-    }
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+public class IdNotFoundException extends EntityNotFoundException {
 
-    public String getMessage() {
-        return String.format("A matéria-prima com ID '%s' não foi encontrada! Consulte os IDs no menu inicial.", id);
+    public IdNotFoundException(String message) {
+        super(message);
     }
 }

@@ -1,4 +1,4 @@
-package br.com.sabatini.model.service;
+package br.com.sabatini.service;
 
 import br.com.sabatini.exception.EmptyFieldException;
 import br.com.sabatini.model.entity.RawMaterial;

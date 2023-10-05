@@ -1,8 +1,9 @@
 package br.com.sabatini.controller;
 
+import br.com.sabatini.model.dto.UserResponseDTO;
 import br.com.sabatini.model.entity.User;
-import br.com.sabatini.model.service.AuthenticationService;
-import br.com.sabatini.model.service.UserService;
+import br.com.sabatini.service.AuthenticationService;
+import br.com.sabatini.service.UserService;
 import br.com.sabatini.security.RegisterRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -33,21 +34,21 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> userList = userService.getAllUsers();
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
+        List<UserResponseDTO> userList = userService.getAllUsers();
         return ResponseEntity.ok().body(userList);
     }
 
     @GetMapping(path = "{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
+    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id) {
+        UserResponseDTO user = userService.getUserById(id);
         return ResponseEntity.ok().body(user);
     }
 
     @PutMapping(path = "{id}")
     public ResponseEntity<Void> updateUser(@PathVariable Long id, @RequestBody User user) {
-        userService.updateUserEmail(id, user);
-        return ResponseEntity.noContent().build();
+        userService.updateUser(id, user);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping(path = "{id}")

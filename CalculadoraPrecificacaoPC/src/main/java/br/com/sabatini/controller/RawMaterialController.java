@@ -2,15 +2,9 @@ package br.com.sabatini.controller;
 
 import br.com.sabatini.model.dto.RawMaterialRequestDTO;
 import br.com.sabatini.model.dto.RawMaterialResponseDTO;
-import br.com.sabatini.model.entity.User;
-import br.com.sabatini.model.service.RawMaterialService;
-import br.com.sabatini.model.service.UserService;
+import br.com.sabatini.service.RawMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -24,8 +18,11 @@ import java.util.List;
 @Validated
 public class RawMaterialController {
 
-    @Autowired
-    private RawMaterialService rawMaterialService;
+    private final RawMaterialService rawMaterialService;
+
+    public RawMaterialController(RawMaterialService rawMaterialService) {
+        this.rawMaterialService = rawMaterialService;
+    }
 
     @PostMapping
     public @ResponseBody ResponseEntity<Void> addRawMaterial(@RequestBody RawMaterialRequestDTO rawMaterialRequestDTO) {
@@ -49,7 +46,7 @@ public class RawMaterialController {
     @PutMapping(path = "/{id}")
     public ResponseEntity<Void> updateRawMaterial(@PathVariable Long id, @RequestBody RawMaterialRequestDTO rawMaterialRequestDTO) {
         rawMaterialService.updateRawMaterial(id, rawMaterialRequestDTO);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping(path = "/{id}")

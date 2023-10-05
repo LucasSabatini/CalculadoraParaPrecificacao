@@ -30,51 +30,49 @@ A função de cálculo final para a precificação de um produto ainda não est�
 
 ## Práticas adotadas
 
-- SOLID, DRY, YAGNI, KISS
-- API REST
+- API RESTful
 - Consultas com Spring Data JPA
 - Injeção de Dependências
 - Tratamento de respostas de erro
-- Geração automática do Swagger com a OpenAPI 3
 - Lombok para redução de código boilerplate
-- JSON Web Tokens (JWT) para autenticação e autorização de cada usuário
+- Registro e Autenticação de usuário com Spring Security e JSON Web Tokens (JWT)
 
 ## Como Executar
 
 - Clonar repositório git
+- Entrar na pasta "/CalculadoraPrecificacaoPC/"
 - Construir o projeto:
 ```
 $ ./mvnw clean package
 ```
 - Executar a aplicação:
 ```
-$ java -jar target/todolist-0.0.1-SNAPSHOT.jar
+$ java -jar target/CalculadoraPrecificacaoPC-1.0.jar
 ```
 
-A API poderá ser acessada em [localhost:8080](http://localhost:8080).
-O Swagger poderá ser visualizado em [localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+- Caso tenha o Apache Maven instalado e configurado, você pode apenas clonar o repositório e executar diretamente através do comando:
+
+```
+$ mvn spring-boot:run
+```
 
 ## API Endpoints
 
 Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](https://www.postman.com/):
 
 # (ATENÇÃO: colocar prints do postman com os métodos abaixo)
-- Criar Tarefa
-```
-POST
-```
+- Registrar Usuário
+
+<img src="">
 
 - Listar Tarefas
-```
-GET
-```
+
+<img src="">
 
 - Atualizar Tarefa
-```
-UPDATE
-```
+
+<img src="">
 
 - Remover Tarefa
-```
-DELETE
-```
+
+<img src="">

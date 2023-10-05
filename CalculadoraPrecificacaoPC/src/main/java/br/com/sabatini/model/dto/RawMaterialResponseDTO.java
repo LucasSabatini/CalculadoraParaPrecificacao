@@ -1,7 +1,6 @@
 package br.com.sabatini.model.dto;
 
 import br.com.sabatini.model.entity.RawMaterial;
-import br.com.sabatini.model.entity.User;
 
 import java.math.BigDecimal;
 
