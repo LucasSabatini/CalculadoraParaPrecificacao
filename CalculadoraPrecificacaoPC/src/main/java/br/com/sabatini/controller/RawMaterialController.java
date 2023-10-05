@@ -31,9 +31,15 @@ public class RawMaterialController {
         return ResponseEntity.created(uri).build();
     }
 
-    @GetMapping
+    @GetMapping(path = "/all")
     public ResponseEntity<List<RawMaterialResponseDTO>> getAllRawMaterials() {
         List<RawMaterialResponseDTO> rawMaterialResponseDTOList = rawMaterialService.getAllRawMaterials();
+        return ResponseEntity.ok().body(rawMaterialResponseDTOList);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<RawMaterialResponseDTO>> getAllRawMaterialsOfUser() {
+        List<RawMaterialResponseDTO> rawMaterialResponseDTOList = rawMaterialService.getAllRawMaterialsOfUser();
         return ResponseEntity.ok().body(rawMaterialResponseDTOList);
     }
 

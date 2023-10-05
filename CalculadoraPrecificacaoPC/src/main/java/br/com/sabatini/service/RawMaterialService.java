@@ -46,6 +46,12 @@ public class RawMaterialService {
         return rawMaterialRepository.findAll().stream().map(RawMaterialResponseDTO::new).toList();
     }
 
+    public List<RawMaterialResponseDTO> getAllRawMaterialsOfUser() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userService.getUserByEmail(userDetails.getUsername());
+        return rawMaterialRepository.getRawMaterialByUser(currentUser).stream().map(RawMaterialResponseDTO::new).toList();
+    }
+
     public RawMaterialResponseDTO getRawMaterialById(Long id) {
         return rawMaterialRepository.findById(id)
                 .map(RawMaterialResponseDTO::new).orElseThrow(() -> new IdNotFoundException("ID não encontrado!"));
