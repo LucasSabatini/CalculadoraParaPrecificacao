@@ -58,7 +58,7 @@ $ mvn spring-boot:run
 
 ## API Endpoints
 
-Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](https://www.postman.com/):
+Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](https://www.postman.com/). Na pasta RecursosPostman, você pode encontrar duas Collections com todas as requisições já prontas para uso, apenas importe-as dentro do seu Workspace no Postman:
 
 ### Camada de Usuário
 
