@@ -23,7 +23,7 @@ A função de cálculo final para a precificação de um produto ainda não est�
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Spring MVC](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
-- [SpringDoc OpenAPI 3](https://springdoc.org/v2/#spring-webflux-support)
+- [Spring Security](https://spring.io/projects/spring-security)
 - [MySQL](https://dev.mysql.com/downloads/)
 - [Lombok](https://projectlombok.org/)
 - [JWT](https://jwt.io/introduction)
@@ -35,7 +35,7 @@ A função de cálculo final para a precificação de um produto ainda não est�
 - Injeção de Dependências
 - Tratamento de respostas de erro
 - Lombok para redução de código boilerplate
-- Registro e Autenticação de usuário com Spring Security e JSON Web Tokens (JWT)
+- Registro e Autenticação de usuários com Spring Security e JSON Web Tokens (JWT)
 
 ## Como Executar
 
@@ -60,19 +60,42 @@ $ mvn spring-boot:run
 
 Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](https://www.postman.com/):
 
-# (ATENÇÃO: colocar prints do postman com os métodos abaixo)
+### Camada de Usuário
+
 - Registrar Usuário
 
 <img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/RegisterUser.png">
 
-- Listar Tarefas
+- Consultar Todos os Usuários
 
-<img src="">
+<img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/GetAllUsers.png">
 
-- Atualizar Tarefa
+- Atualizar Usuário
 
-<img src="">
+<img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/UpdateUser.png">
 
-- Remover Tarefa
+- Remover Usuário
 
-<img src="">
+<img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/DeleteUser.png">
+
+### Camada das Matérias-Primas
+
+- Nova Matéria-Prima
+
+<img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/AddRawMaterial.png">
+
+- Consultar Todas as Matérias-Primas
+
+<img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/GetAllRawMaterials.png">
+
+- Consultar as Matérias-Primas do Usuário logado
+
+<img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/GetAllRawMaterialsOfUser.png">
+
+- Atualizar Matéria-Prima
+
+<img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/UpdateRawMaterial.png">
+
+- Remover Matéria-Prima
+
+<img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/DeleteRawMaterial.png">
