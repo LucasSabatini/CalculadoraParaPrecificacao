@@ -63,7 +63,7 @@ Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](ht
 # (ATENÇÃO: colocar prints do postman com os métodos abaixo)
 - Registrar Usuário
 
-<img src="">
+<img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/RegisterUser.png">
 
 - Listar Tarefas
 
