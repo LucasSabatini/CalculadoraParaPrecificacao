@@ -39,6 +39,8 @@ A função de cálculo final para a precificação de um produto ainda não est�
 
 ## Como Executar
 
+*Não se esqueça de configurar o arquivo application.properties com as informações de seu banco de dados.*
+
 - Clonar repositório git
 - Entrar na pasta "/CalculadoraPrecificacaoPC/"
 - Construir o projeto:
@@ -58,7 +60,7 @@ $ mvn spring-boot:run
 
 ## API Endpoints
 
-Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](https://www.postman.com/). Na pasta RecursosPostman, você pode encontrar duas Collections com todas as requisições já prontas para uso, apenas importe-as dentro do seu Workspace no Postman:
+Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](https://www.postman.com/). Na pasta [RecursosPostman](https://github.com/LucasSabatini/CalculadoraParaPrecificacao/tree/master/RecursosPostman), você pode encontrar duas Collections no formato JSON com todas as requisições já prontas para uso, apenas importe-as dentro do seu Workspace no Postman:
 
 ### Camada de Usuário
 
