@@ -64,6 +64,8 @@ Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](ht
 
 ### Camada de Usuário
 
+*Confira as respostas das requisições retornando o status 2xx (sucesso)*
+
 - Registrar Usuário
 
 <img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/RegisterUser.png">
