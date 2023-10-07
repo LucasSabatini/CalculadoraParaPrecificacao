@@ -92,6 +92,10 @@ Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](ht
 
 <img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/GetAllRawMaterialsOfUser.png">
 
+- Consultar Matéria-Prima por Id
+
+- <img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/GetRawMaterialById.png">
+
 - Atualizar Matéria-Prima
 
 <img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/UpdateRawMaterial.png">
