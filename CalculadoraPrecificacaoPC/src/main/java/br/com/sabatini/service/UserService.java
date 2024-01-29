@@ -5,7 +5,6 @@ import br.com.sabatini.exception.UserNotFoundException;
 import br.com.sabatini.model.dto.UserResponseDTO;
 import br.com.sabatini.model.entity.User;
 import br.com.sabatini.repository.UserRepository;
-import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,11 +18,6 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
-//    @Transactional
-//    public User addUser(User user) {
-//        return userRepository.save(user);
-//    }
 
     public List<UserResponseDTO> getAllUsers() {
         return userRepository.findAll().stream().map(UserResponseDTO::new).toList();
