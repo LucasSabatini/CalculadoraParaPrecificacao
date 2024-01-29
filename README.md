@@ -41,6 +41,8 @@ A função de cálculo final para a precificação de um produto ainda não est�
 
 *Não se esqueça de configurar o arquivo application.properties com as informações de seu banco de dados.*
 
+*A autenticação é feita através do endpoint /auth/api/register que retornará um Token a ser autenticado através do endpoint /auth/api/authenticate. Após isso, basta utilizar o token para realizar quaisquer das requisições abaixo.*
+
 - Clonar repositório git
 - Entrar na pasta "/CalculadoraPrecificacaoPC/"
 - Construir o projeto:
