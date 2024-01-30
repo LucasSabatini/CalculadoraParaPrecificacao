@@ -1,9 +1,6 @@
 package br.com.sabatini.exception;
 
 import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.security.SecurityException;
-import io.jsonwebtoken.security.SignatureException;
-import jakarta.servlet.ServletException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -15,11 +12,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
-
-import javax.naming.AuthenticationException;
-import java.io.IOException;
-import java.nio.file.AccessDeniedException;
-import java.sql.SQLIntegrityConstraintViolationException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
