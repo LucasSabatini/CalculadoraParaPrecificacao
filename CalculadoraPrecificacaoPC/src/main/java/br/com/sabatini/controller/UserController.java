@@ -1,7 +1,7 @@
 package br.com.sabatini.controller;
 
+import br.com.sabatini.model.dto.UserRequestDTO;
 import br.com.sabatini.model.dto.UserResponseDTO;
-import br.com.sabatini.model.entity.User;
 import br.com.sabatini.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -38,9 +38,9 @@ public class UserController {
     @PutMapping(path = "{id}",
                 produces = {APPLICATION_JSON, APPLICATION_XML, APPLICATION_YML},
                 consumes = {APPLICATION_JSON, APPLICATION_XML, APPLICATION_YML})
-    public ResponseEntity<Void> updateUser(@PathVariable Long id, @RequestBody User user) {
-        userService.updateUser(id, user);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @RequestBody UserRequestDTO userRequestDTO) {
+        UserResponseDTO userResponseDTO = userService.updateUser(id, userRequestDTO);
+        return ResponseEntity.ok().body(userResponseDTO);
     }
 
     @DeleteMapping(path = "{id}")
