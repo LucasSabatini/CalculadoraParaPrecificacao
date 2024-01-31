@@ -1,11 +1,13 @@
 package br.com.sabatini.service;
 
 import br.com.sabatini.exception.IdNotFoundException;
+import br.com.sabatini.exception.UserNotFoundException;
 import br.com.sabatini.model.dto.RawMaterialRequestDTO;
 import br.com.sabatini.model.dto.RawMaterialResponseDTO;
 import br.com.sabatini.model.entity.RawMaterial;
 import br.com.sabatini.model.entity.User;
 import br.com.sabatini.repository.RawMaterialRepository;
+import br.com.sabatini.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -17,17 +19,17 @@ import java.util.List;
 public class RawMaterialService {
 
     private final RawMaterialRepository rawMaterialRepository;
-    private final UserService userService;
+    private final UserRepository userRepository;
 
-    public RawMaterialService(RawMaterialRepository rawMaterialRepository, UserService userService) {
+    public RawMaterialService(RawMaterialRepository rawMaterialRepository, UserRepository userRepository) {
         this.rawMaterialRepository = rawMaterialRepository;
-        this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     @Transactional
     public RawMaterialResponseDTO addRawMaterial(RawMaterialRequestDTO rawMaterialRequestDTO) {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User currentUser = userService.getUserByEmail(userDetails.getUsername());
+        User currentUser = userRepository.getUserByEmail(userDetails.getUsername()).orElseThrow(() -> new UserNotFoundException("Usuário não encontrado!"));
         RawMaterial rawMaterial = new RawMaterial(rawMaterialRequestDTO);
         rawMaterial.setUser(currentUser);
         Validator.validateRawMaterial(rawMaterial);
@@ -48,7 +50,7 @@ public class RawMaterialService {
 
     public List<RawMaterialResponseDTO> getAllRawMaterialsOfUser() {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User currentUser = userService.getUserByEmail(userDetails.getUsername());
+        User currentUser = userRepository.getUserByEmail(userDetails.getUsername()).orElseThrow(() -> new UserNotFoundException("Usuário não encontrado!"));
         return rawMaterialRepository.getRawMaterialByUser(currentUser).stream().map(RawMaterialResponseDTO::new).toList();
     }
 
