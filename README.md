@@ -20,7 +20,7 @@ A função de cálculo final para a precificação de um produto ainda não est�
 - [Spring Security](https://spring.io/projects/spring-security) e [JWT](https://jwt.io/introduction)
 - [MySQL](https://dev.mysql.com/downloads/)
 - [Lombok](https://projectlombok.org/)
-- [Swagger OpenAPI] (https://swagger.io/resources/open-api/)
+- [Swagger OpenAPI](https://swagger.io/resources/open-api/)
 
 ## Práticas adotadas
 
