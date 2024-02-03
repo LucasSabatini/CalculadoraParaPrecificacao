@@ -1,0 +1,4338 @@
+{
+	"info": {
+		"_postman_id": "b3a3f780-8083-4cd3-9457-4f1dce46b1fb",
+		"name": "Calculadora para a Precificação de Produtos e de Gastos com Matérias-Primas",
+		"description": "O projeto é uma API desenvolvida com o objetivo de fornecer uma interface para o cálculo realizado na precificação de produtos para posterior venda e para o cálculo de gastos com as matérias-primas utilizadas em seus produtos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23882964"
+	},
+	"item": [
+		{
+			"name": "materiaprima",
+			"item": [
+				{
+					"name": "Obter todas as matérias-primas do usuário autenticado",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/materiaprima",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"materiaprima"
+							]
+						},
+						"description": "Obter todas as matérias-primas do usuário autenticado"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nameRawMaterial\": \"<string>\",\n    \"pricePaid\": \"<number>\",\n    \"weightUsedInRecipe\": \"<number>\",\n    \"weightPurchased\": \"<number>\",\n    \"finalCost\": \"<number>\",\n    \"user_id\": \"<long>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nameRawMaterial\": \"<string>\",\n    \"pricePaid\": \"<number>\",\n    \"weightUsedInRecipe\": \"<number>\",\n    \"weightPurchased\": \"<number>\",\n    \"finalCost\": \"<number>\",\n    \"user_id\": \"<long>\"\n  }\n]"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Adiciona uma matéria-prima",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/materiaprima",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"materiaprima"
+							]
+						},
+						"description": "Adiciona uma matéria-prima passando uma representação em JSON, XML ou YML da entidade RawMaterialRequestDTO"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<long>\",\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\",\n  \"finalCost\": \"<number>\",\n  \"user_id\": \"<long>\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obter todas as matérias-primas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/materiaprima/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"materiaprima",
+								"all"
+							]
+						},
+						"description": "Obter todas as matérias-primas"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nameRawMaterial\": \"<string>\",\n    \"pricePaid\": \"<number>\",\n    \"weightUsedInRecipe\": \"<number>\",\n    \"weightPurchased\": \"<number>\",\n    \"finalCost\": \"<number>\",\n    \"user_id\": \"<long>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nameRawMaterial\": \"<string>\",\n    \"pricePaid\": \"<number>\",\n    \"weightUsedInRecipe\": \"<number>\",\n    \"weightPurchased\": \"<number>\",\n    \"finalCost\": \"<number>\",\n    \"user_id\": \"<long>\"\n  }\n]"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										"all"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										"all"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										"all"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										"all"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										"all"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										"all"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										"all"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obter matéria-prima por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/materiaprima/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"materiaprima",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<long>",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Obter matéria-prima por ID"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<long>\",\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\",\n  \"finalCost\": \"<number>\",\n  \"user_id\": \"<long>\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Atualiza uma matéria-prima",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/materiaprima/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"materiaprima",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<long>",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Atualiza uma matéria-prima passando uma representação em JSON, XML ou YML da entidade RawMaterialRequestDTO"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<long>\",\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\",\n  \"finalCost\": \"<number>\",\n  \"user_id\": \"<long>\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nameRawMaterial\": \"<string>\",\n  \"pricePaid\": \"<number>\",\n  \"weightUsedInRecipe\": \"<number>\",\n  \"weightPurchased\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Deleta uma matéria-prima",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/materiaprima/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"materiaprima",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<long>",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Deleta uma matéria-prima por ID"
+					},
+					"response": [
+						{
+							"name": "No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/materiaprima/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"materiaprima",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Obter usuários",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						},
+						"description": "Obter todos os usuários"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"rawMaterials\": [\n      {\n        \"nameRawMaterial\": \"<string>\",\n        \"id\": \"<long>\",\n        \"pricePaid\": \"<number>\",\n        \"weightUsedInRecipe\": \"<number>\",\n        \"weightPurchased\": \"<number>\",\n        \"finalCost\": \"<number>\"\n      },\n      {\n        \"nameRawMaterial\": \"<string>\",\n        \"id\": \"<long>\",\n        \"pricePaid\": \"<number>\",\n        \"weightUsedInRecipe\": \"<number>\",\n        \"weightPurchased\": \"<number>\",\n        \"finalCost\": \"<number>\"\n      }\n    ],\n    \"_links\": {\n      \"aute5a6\": {\n        \"href\": \"<string>\",\n        \"hreflang\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"deprecation\": \"<string>\",\n        \"profile\": \"<string>\",\n        \"name\": \"<string>\",\n        \"templated\": \"<boolean>\"\n      }\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"rawMaterials\": [\n      {\n        \"nameRawMaterial\": \"<string>\",\n        \"id\": \"<long>\",\n        \"pricePaid\": \"<number>\",\n        \"weightUsedInRecipe\": \"<number>\",\n        \"weightPurchased\": \"<number>\",\n        \"finalCost\": \"<number>\"\n      },\n      {\n        \"nameRawMaterial\": \"<string>\",\n        \"id\": \"<long>\",\n        \"pricePaid\": \"<number>\",\n        \"weightUsedInRecipe\": \"<number>\",\n        \"weightPurchased\": \"<number>\",\n        \"finalCost\": \"<number>\"\n      }\n    ],\n    \"_links\": {\n      \"consectetur_8_4\": {\n        \"href\": \"<string>\",\n        \"hreflang\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"deprecation\": \"<string>\",\n        \"profile\": \"<string>\",\n        \"name\": \"<string>\",\n        \"templated\": \"<boolean>\"\n      }\n    }\n  }\n]"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obter usuário",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/user/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<long>",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Obter usuário por ID"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"rawMaterials\": [\n    {\n      \"nameRawMaterial\": \"<string>\",\n      \"id\": \"<long>\",\n      \"pricePaid\": \"<number>\",\n      \"weightUsedInRecipe\": \"<number>\",\n      \"weightPurchased\": \"<number>\",\n      \"finalCost\": \"<number>\"\n    },\n    {\n      \"nameRawMaterial\": \"<string>\",\n      \"id\": \"<long>\",\n      \"pricePaid\": \"<number>\",\n      \"weightUsedInRecipe\": \"<number>\",\n      \"weightPurchased\": \"<number>\",\n      \"finalCost\": \"<number>\"\n    }\n  ],\n  \"_links\": {\n    \"sunt_8e\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Atualiza um usuário",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/user/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<long>",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Atualiza um usuário passando uma representação em JSON, XML ou YML da entidade UserRequestDTO"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"rawMaterials\": [\n    {\n      \"nameRawMaterial\": \"<string>\",\n      \"id\": \"<long>\",\n      \"pricePaid\": \"<number>\",\n      \"weightUsedInRecipe\": \"<number>\",\n      \"weightPurchased\": \"<number>\",\n      \"finalCost\": \"<number>\"\n    },\n    {\n      \"nameRawMaterial\": \"<string>\",\n      \"id\": \"<long>\",\n      \"pricePaid\": \"<number>\",\n      \"weightUsedInRecipe\": \"<number>\",\n      \"weightPurchased\": \"<number>\",\n      \"finalCost\": \"<number>\"\n    }\n  ],\n  \"_links\": {\n    \"sunt_8e\": {\n      \"href\": \"<string>\",\n      \"hreflang\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"deprecation\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"name\": \"<string>\",\n      \"templated\": \"<boolean>\"\n    }\n  }\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Deleta um usuário",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/user/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<long>",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Deleta um usuário através do ID"
+					},
+					"response": [
+						{
+							"name": "No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/user/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Registra um usuário",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Registra um usuário passando uma representação em JSON, XML ou YML da entidade RegisterRequest"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Autentica um usuário",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-yaml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/authenticate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"authenticate"
+							]
+						},
+						"description": "Autentica um usuário passando seu email e senha em JSON, XML ou YML"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/authenticate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"authenticate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"token\": \"<string>\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/authenticate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"authenticate"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/authenticate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"authenticate"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/authenticate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"authenticate"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/authenticate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"authenticate"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Conflict",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/authenticate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"authenticate"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/authenticate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"authenticate"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/authenticate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"authenticate"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	]
+}
