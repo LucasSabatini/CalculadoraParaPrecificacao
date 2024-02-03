@@ -87,7 +87,7 @@ public class RawMaterialController {
                 produces = {APPLICATION_JSON, APPLICATION_XML, APPLICATION_YML})
     @Operation(summary = "Obter matéria-prima por ID",
             description = "Obter matéria-prima por ID",
-            tags = "Matéria-prima",
+            tags = "Matéria-Prima",
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = RawMaterialResponseDTO.class))
@@ -110,7 +110,7 @@ public class RawMaterialController {
                  consumes = {APPLICATION_JSON, APPLICATION_XML, APPLICATION_YML})
     @Operation(summary = "Adiciona uma matéria-prima",
             description = "Adiciona uma matéria-prima passando uma representação em JSON, XML ou YML da entidade RawMaterialRequestDTO",
-            tags = "Matéria-prima",
+            tags = "Matéria-Prima",
             responses = {
                     @ApiResponse(description = "Created", responseCode = "201",
                             content = @Content(schema = @Schema(implementation = RawMaterialResponseDTO.class))
@@ -135,7 +135,7 @@ public class RawMaterialController {
                 consumes = {APPLICATION_JSON, APPLICATION_XML, APPLICATION_YML})
     @Operation(summary = "Atualiza uma matéria-prima",
             description = "Atualiza uma matéria-prima passando uma representação em JSON, XML ou YML da entidade RawMaterialRequestDTO",
-            tags = "Matéria-prima",
+            tags = "Matéria-Prima",
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = RawMaterialResponseDTO.class))
@@ -157,7 +157,7 @@ public class RawMaterialController {
     @DeleteMapping(path = "/{id}")
     @Operation(summary = "Deleta uma matéria-prima",
             description = "Deleta uma matéria-prima por ID",
-            tags = "Matéria-prima",
+            tags = "Matéria-Prima",
             responses = {
                     @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
