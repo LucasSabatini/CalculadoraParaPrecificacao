@@ -6,15 +6,9 @@
  <img src="https://img.shields.io/static/v1?label=LinkedIn&message=@lucas-frsabatini&color=0e76a8&labelColor=000000" alt="@lucas-fsabatini"/>
 </p>
 
-Este repósitorio foi criado com o propósito de auto-aperfeiçoamento no desenvolvimento de projetos em Java.
-
 O projeto é uma API desenvolvida com o objetivo de fornecer uma interface para o cálculo realizado na **precificação de produtos** para posterior venda e para o cálculo de **gastos com as matérias-primas** utilizadas em seus produtos.
 #
-A função de cálculo dos gastos com matérias-primas está concluída no backend, mas o intuito é fornecer uma interface de frontend que será desenvolvida futuramente. Esta função tem a capacidade de organizar, em um banco de dados, as matérias-primas adicionadas pelo usuário com o cálculo do gasto final já incluso para cada uma.
-
-São necessários o nome, o preço pago na matéria-prima, o peso usado da matéria-prima na sua receita e o peso total comprado de matéria-prima. Com estas informações, será feito o cálculo equivalente ao gasto desta matéria-prima usada em cada produto e retornado ao usuário, enquanto também é armazenada em seu banco de dados exclusivo.
-
-Esta API fornece as principais operações de Criação, Leitura, Atualização e Exclusão (CRUD) no banco de dados para cada matéria-prima, além de uma serviço de segurança e autenticação.
+Ela fornece as principais operações de Criação, Leitura, Atualização e Exclusão (CRUD) no banco de dados para cada matéria-prima, além de um serviço de segurança com autorização e autenticação para os usuários cadastrados.
 #
 A função de cálculo final para a precificação de um produto ainda não está concluída, mas já está em desenvolvimento. A ideia é semelhante à função relacionada às matérias-primas. Entretanto, cada produto poderá ter uma lista de matérias-primas que o constituem e a ideia é incluir no preço final os gastos administrativos, o percentual de lucro desejado, além de todos os gastos de produção, para que seja retornado ao usuário o preço final recomendado com base nas necessidades de cada usuário.
 
@@ -23,10 +17,10 @@ A função de cálculo final para a precificação de um produto ainda não est�
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Spring MVC](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
-- [Spring Security](https://spring.io/projects/spring-security)
+- [Spring Security](https://spring.io/projects/spring-security) e [JWT](https://jwt.io/introduction)
 - [MySQL](https://dev.mysql.com/downloads/)
 - [Lombok](https://projectlombok.org/)
-- [JWT](https://jwt.io/introduction)
+- [Swagger OpenAPI] (https://swagger.io/resources/open-api/)
 
 ## Práticas adotadas
 
@@ -36,33 +30,35 @@ A função de cálculo final para a precificação de um produto ainda não est�
 - Tratamento de respostas de erro
 - Lombok para redução de código boilerplate
 - Registro e Autenticação de usuários com Spring Security e JSON Web Tokens (JWT)
+- Content Negotiation para a produção e consumo de dados nos formatos JSON, XML e YMAL
+- Hypermedia As the Engine Of Application State (HATEOAS)
+- Documentação com Swagger OpenAPI
 
 ## Como Executar
 
-*Não se esqueça de configurar o arquivo application.properties com as informações de seu banco de dados.*
-
-*A autenticação é feita através do endpoint /auth/api/register que retornará um Token a ser autenticado através do endpoint /auth/api/authenticate. Após isso, basta utilizar o token para realizar quaisquer das requisições abaixo.*
+*Não se esqueça de configurar o arquivo application.properties com as informações do seu banco de dados.*
 
 - Clonar repositório git
 - Entrar na pasta "/CalculadoraPrecificacaoPC/"
 - Construir o projeto:
 ```
-$ ./mvnw clean package
+./mvnw clean package
 ```
 - Executar a aplicação:
 ```
-$ java -jar target/CalculadoraPrecificacaoPC-1.0.jar
+java -jar target/CalculadoraPrecificacaoPC-1.0.jar
 ```
 
 - Caso tenha o Apache Maven instalado e configurado, você pode apenas clonar o repositório e executar diretamente através do comando:
 
 ```
-$ mvn spring-boot:run
+mvn spring-boot:run
 ```
 
 ## API Endpoints
 
-Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](https://www.postman.com/). Na pasta [RecursosPostman](https://github.com/LucasSabatini/CalculadoraParaPrecificacao/tree/master/RecursosPostman), você pode encontrar duas Collections no formato JSON com todas as requisições já prontas para uso, apenas importe-as dentro do seu Workspace no Postman:
+Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [Postman](https://www.postman.com/). Na pasta [PostmanCollections](https://github.com/LucasSabatini/CalculadoraParaPrecificacao/tree/master/PostmanCollections), você irá encontrar o arquivo para a Collection e outro para o Environment, ambos no formato JSON, com todas as requisições já prontas para uso, apenas importe-as no seu Postman.
+A autenticação é feita através do endpoint /auth/api/register que retornará um Token a ser autenticado através do endpoint /auth/api/authenticate. Após isso, o token será setado automaticamente como uma variável do Postman a ser utilizado em todas as requisições realizadas. Caso haja algum erro, confira a aba Authorization do Postman e selecione a opção Bearer Token caso não esteja selecionada:
 
 ### Camada de Usuário
 
@@ -71,6 +67,10 @@ Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](ht
 - Registrar Usuário
 
 <img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/RegisterUser.png">
+
+- Autenticar Usuário
+
+<img src="https://github.com/LucasSabatini/CalculadoraParaPrecificacao/blob/master/RecursosPostman/AuthenticateUser.png">
 
 - Consultar Todos os Usuários
 

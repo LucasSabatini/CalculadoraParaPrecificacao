@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b3a3f780-8083-4cd3-9457-4f1dce46b1fb",
+		"_postman_id": "1d75e289-5e59-4ba1-8501-827eea644cb9",
 		"name": "Calculadora para a Precificação de Produtos e de Gastos com Matérias-Primas",
 		"description": "O projeto é uma API desenvolvida com o objetivo de fornecer uma interface para o cálculo realizado na precificação de produtos para posterior venda e para o cálculo de gastos com as matérias-primas utilizadas em seus produtos.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -13,6 +13,16 @@
 				{
 					"name": "Obter todas as matérias-primas do usuário autenticado",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -292,6 +302,16 @@
 				{
 					"name": "Adiciona uma matéria-prima",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -693,6 +713,16 @@
 				{
 					"name": "Obter todas as matérias-primas",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -981,6 +1011,16 @@
 				{
 					"name": "Obter matéria-prima por ID",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1316,6 +1356,16 @@
 				{
 					"name": "Atualiza uma matéria-prima",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -1773,6 +1823,16 @@
 				{
 					"name": "Deleta uma matéria-prima",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -2105,6 +2165,16 @@
 				{
 					"name": "Obter usuários",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2384,6 +2454,16 @@
 				{
 					"name": "Obter usuário",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2719,6 +2799,16 @@
 				{
 					"name": "Atualiza um usuário",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -3176,6 +3266,16 @@
 				{
 					"name": "Deleta um usuário",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -3508,6 +3608,16 @@
 				{
 					"name": "Registra um usuário",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -3908,7 +4018,32 @@
 				},
 				{
 					"name": "Autentica um usuário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code >= 200 && responseCode.code <= 299) {\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"    postman.setEnvironmentVariable('token', jsonData.token);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
