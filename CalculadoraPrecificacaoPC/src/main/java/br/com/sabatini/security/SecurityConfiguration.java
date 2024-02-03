@@ -25,10 +25,12 @@ public class SecurityConfiguration {
                 httpBasic(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authHttpRequest -> authHttpRequest
-                        .requestMatchers("api/auth/register",
-                                "api/auth/authenticate").permitAll()
-                        .requestMatchers("api/materiaprima/**").authenticated()
-                        .requestMatchers("api/user/**").authenticated())
+                        .requestMatchers("/api/auth/register",
+                                         "/api/auth/authenticate",
+                                         "/swagger-ui/**",
+                                         "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/api/materiaprima/**").authenticated()
+                        .requestMatchers("/api/user/**").authenticated())
                 .cors(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
