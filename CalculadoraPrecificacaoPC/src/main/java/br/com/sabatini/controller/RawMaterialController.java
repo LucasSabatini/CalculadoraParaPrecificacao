@@ -19,7 +19,6 @@ import java.util.List;
 
 import static br.com.sabatini.serialization.converter.MediaType.*;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/materiaprima")
 @Validated

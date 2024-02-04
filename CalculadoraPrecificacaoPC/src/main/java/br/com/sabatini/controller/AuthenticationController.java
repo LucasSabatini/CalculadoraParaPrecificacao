@@ -1,6 +1,5 @@
 package br.com.sabatini.controller;
 
-import br.com.sabatini.model.dto.UserResponseDTO;
 import br.com.sabatini.security.AuthenticationRequest;
 import br.com.sabatini.security.AuthenticationResponse;
 import br.com.sabatini.security.RegisterRequest;
