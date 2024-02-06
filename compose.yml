@@ -20,6 +20,8 @@ services:
   calculadora-precificacao-pc:
     image: lucassabatini/calculadora_precificacao
     restart: always
+    build:
+      ./CalculadoraPrecificacaoPC
     working_dir: /CalculadoraPrecificacaoPC
     environment:
       TZ: America/Sao_Paulo
