@@ -3,14 +3,13 @@
 </h1>
 
 <p align="center">
- <img src="https://img.shields.io/static/v1?label=LinkedIn&message=@lucas-frsabatini&color=0e76a8&labelColor=000000" alt="@lucas-fsabatini"/>
+ <img src="https://img.shields.io/static/v1?label=LinkedIn&message=@lucas-frsabatini&color=0e76a8&labelColor=000000" alt="@lucas-fsabatini"><br/>
+ <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/lucassabatini/calculadora_precificacao?label=Docker Pulls">
 </p>
 
 O projeto é uma API desenvolvida com o objetivo de fornecer uma interface para o cálculo realizado na **precificação de produtos** para posterior venda e para o cálculo de **gastos com as matérias-primas** utilizadas em seus produtos.
 #
 Ela fornece as principais operações de Criação, Leitura, Atualização e Exclusão (CRUD) no banco de dados para cada matéria-prima, além de um serviço de segurança com autorização e autenticação para os usuários cadastrados.
-#
-A função de cálculo final para a precificação de um produto ainda não está concluída, mas já está em desenvolvimento. A ideia é semelhante à função relacionada às matérias-primas. Entretanto, cada produto poderá ter uma lista de matérias-primas que o constituem e a ideia é incluir no preço final os gastos administrativos, o percentual de lucro desejado, além de todos os gastos de produção, para que seja retornado ao usuário o preço final recomendado com base nas necessidades de cada usuário.
 
 ## Tecnologias
  
@@ -35,6 +34,28 @@ A função de cálculo final para a precificação de um produto ainda não est�
 - Documentação com Swagger OpenAPI
 
 ## Como Executar
+
+### Docker
+
+*Caso possua o Docker instalado, você pode baixar apenas o arquivo compose.yml e executar os comando abaixo:*
+
+- Entre no diretório em que salvou o arquivo compose.yml
+- Abra o terminal e digite:
+```
+docker compose up -d
+```
+
+- Aguarde até a inicialização estar completa. Você pode conferir com o comando:
+```
+docker ps -a
+```
+- Quando as portas estiverem setadas, será possível utilizar a aplicação na porta 80 e o banco de dados na porta 3308.
+- Você pode conferir mais informações de acesso no próprio arquivo compose.yml e informações sobre a API na UI do Swagger acessando:
+```
+http://localhost/swagger-ui/index.html
+```
+
+### Maven
 
 *Não se esqueça de configurar o arquivo application.properties com as informações do seu banco de dados.*
 
