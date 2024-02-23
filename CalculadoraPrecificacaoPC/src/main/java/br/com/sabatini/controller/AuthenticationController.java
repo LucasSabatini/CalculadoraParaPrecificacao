@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.IOException;
 import java.net.URI;
 
 import static br.com.sabatini.serialization.converter.MediaType.*;
@@ -75,5 +78,16 @@ public class AuthenticationController {
     )
     public ResponseEntity<AuthenticationResponse> authenticateUser(@RequestBody AuthenticationRequest request) {
         return ResponseEntity.ok(authService.authenticateUser(request));
+    }
+
+    @PostMapping(path =  "/refresh-token",
+            produces = {APPLICATION_JSON, APPLICATION_XML, APPLICATION_YML},
+            consumes = {APPLICATION_JSON, APPLICATION_XML, APPLICATION_YML})
+    @Operation(summary = "Atualiza o Token",
+            description = "Atualiza o token do usuário após expirar",
+            tags = "Security")
+    public void refreshToken(HttpServletRequest request,
+                             HttpServletResponse response) throws IOException {
+        authService.refreshToken(request, response);
     }
 }
