@@ -56,7 +56,7 @@ public class User implements UserDetails {
     @Size(groups = {CreateUser.class, UpdateUser.class}, min = 4, max = 100)
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Column(name = "rawMaterials")
     private List<RawMaterial> rawMaterials = new ArrayList<>();
 
