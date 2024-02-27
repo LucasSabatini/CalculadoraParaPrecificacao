@@ -45,6 +45,7 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         return AuthenticationResponse.builder()
+                .firstName(user.getFirstName())
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
                 .build();
@@ -56,6 +57,7 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         return AuthenticationResponse.builder()
+                .firstName(user.getFirstName())
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
                 .build();
